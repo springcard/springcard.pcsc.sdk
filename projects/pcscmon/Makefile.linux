@@ -1,0 +1,17 @@
+
+CFLAGS+=-I/usr/include/PCSC -I/usr/local/include/PCSC
+
+SRCS:=\
+	pcscmon.c \
+	atr_analysis.c \
+	get_data.c
+	
+OBJS:=$(patsubst %.c,obj/%.o,$(SRCS))
+
+all: bin/pcscmon
+
+bin/pcscmon: $(OBJS)
+	$(CC) $(LDFLAGS) $^ $(LDLIBS) -lpcsclite -o $@
+
+obj/%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<

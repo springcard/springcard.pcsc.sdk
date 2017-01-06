@@ -1,0 +1,6 @@
+2016.03.29	2016-03-29
+Release on GitHub and www.Springcard.com
+
+2017.01.05	2017-01-05
+Adding NfcForum projects (NfcTool, NfcBeam and NfcTagEmul)
+Library SpringCardPCSC ported on Linux and Mac OS X

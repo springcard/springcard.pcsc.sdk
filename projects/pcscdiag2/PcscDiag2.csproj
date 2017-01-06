@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{E0086466-5757-46DC-BF8E-3F27321F0AA1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PcscDiag2</RootNamespace>
+    <AssemblyName>PcscDiag2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <ApplicationIcon>smartcard.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
+    <AssemblyOriginatorKeyFile>I:\builder\keys\springcard_codesigning_class3.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\johann\AppData\Roaming\ICSharpCode/SharpDevelop4\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <BaseIntermediateOutputPath>..\..\_obj\pcscdiag2\AnyCPU\Release</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC.cs">
+      <Link>SpringCardPCSC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardBuffer.cs">
+      <Link>SpringCardPCSC_CardBuffer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardChannel.cs">
+      <Link>SpringCardPCSC_CardChannel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardReader.cs">
+      <Link>SpringCardPCSC_CardReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_ReaderList.cs">
+      <Link>SpringCardPCSC_ReaderList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_Utils.cs">
+      <Link>SpringCardPCSC_Utils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\utils\imageconvert.cs">
+      <Link>imageconvert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\console.cs">
+      <Link>console.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\Hexbox\HexBox.cs">
+      <Link>HexBox.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Forms\AboutForm.cs">
+      <Link>AboutForm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Forms\AboutForm.Designer.cs">
+      <Link>AboutForm.Designer.cs</Link>
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookmarkForm.cs" />
+    <Compile Include="BookmarkForm.Designer.cs">
+      <DependentUpon>BookmarkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardForm.cs" />
+    <Compile Include="CardForm.Designer.cs">
+      <DependentUpon>CardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardInfoForm.cs" />
+    <Compile Include="CardInfoForm.Designer.cs">
+      <DependentUpon>CardInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configs.cs" />
+    <Compile Include="ConnectForm.cs" />
+    <Compile Include="ConnectForm.Designer.cs">
+      <DependentUpon>ConnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContextAndListForm.cs" />
+    <Compile Include="ContextAndListForm.Designer.cs">
+      <DependentUpon>ContextAndListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DisconnectForm.cs" />
+    <Compile Include="DisconnectForm.Designer.cs">
+      <DependentUpon>DisconnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EndTransactionForm.cs" />
+    <Compile Include="EndTransactionForm.Designer.cs">
+      <DependentUpon>EndTransactionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\EXListView\EXComboBox.cs">
+      <Link>EXComboBox.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\EXListView\EXListView.cs">
+      <Link>EXListView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\BuiltInContextMenu.cs">
+      <Link>BuiltInContextMenu.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\ByteCharConverters.cs">
+      <Link>ByteCharConverters.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\ByteCollection.cs">
+      <Link>ByteCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\BytePositionInfo.cs">
+      <Link>BytePositionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\DynamicByteProvider.cs">
+      <Link>DynamicByteProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\HexCasing.cs">
+      <Link>HexCasing.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\IByteProvider.cs">
+      <Link>IByteProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\NativeMethods.cs">
+      <Link>NativeMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Controls\HexBox\Util.cs">
+      <Link>Util.cs</Link>
+    </Compile>
+    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReaderInfoForm.cs" />
+    <Compile Include="ReaderInfoForm.Designer.cs">
+      <DependentUpon>ReaderInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReconnectForm.cs" />
+    <Compile Include="ReconnectForm.Designer.cs">
+      <DependentUpon>ReconnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SplashForm.cs" />
+    <Compile Include="SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\src\common\lib-cs\windows\Controls\Hexbox\HexBox.resx">
+      <Link>HexBox.resx</Link>
+      <DependentUpon>HexBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\src\common\lib-cs\windows\Forms\AboutForm.resx">
+      <Link>AboutForm.resx</Link>
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardForm.resx">
+      <DependentUpon>CardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardInfoForm.resx">
+      <DependentUpon>CardInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectForm.resx">
+      <DependentUpon>ConnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContextAndListForm.resx">
+      <DependentUpon>ContextAndListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DisconnectForm.resx">
+      <DependentUpon>DisconnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EndTransactionForm.resx">
+      <DependentUpon>EndTransactionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReaderInfoForm.resx">
+      <DependentUpon>ReaderInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReconnectForm.resx">
+      <DependentUpon>ReconnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>..\..\_obj\pcscdiag2\$(Platform)\$(Configuration)\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>..\..\_obj\pcscdiag2\$(Platform)\$(Configuration)\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <AssemblyName>PcscDiag2-x86</AssemblyName>
+    <OutputPath>..\..\_output\win32\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <AssemblyName>PcscDiag2-x64</AssemblyName>
+    <OutputPath>..\..\_output\win64\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <OutputPath>..\..\_output\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <PropertyGroup>
+    <PostBuildEvent>$(ProjectDir)postbuild.cmd $(OutDir)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>..\..\_obj\pcscdiag2\$(Platform)\$(Configuration)\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType></DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <PlatformTarget>anycpu</PlatformTarget>
+  </PropertyGroup>
+</Project>

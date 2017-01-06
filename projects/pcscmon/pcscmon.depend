@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1273682260 source:i:\projects\springcard\pcsc\samples\c\pcscmon\get_data.c
+	<stdio.h>
+	<string.h>
+	<winscard.h>
+	"pcscmon.h"
+	<time.h>
+	<sys/time.h>
+
+1252425598 i:\projects\springcard\pcsc\samples\c\pcscmon\pcscmon.h
+	<winscard.h>
+
+1370963324 source:i:\projects\springcard\pcsc\samples\c\pcscmon\pcscmon.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<winscard.h>
+	"pcscmon.h"
+
+1273679354 source:i:\projects\springcard\pcsc\samples\c\pcscmon\atr_analysis.c
+	<stdio.h>
+	<string.h>
+	<winscard.h>
+	"pcscmon.h"
+

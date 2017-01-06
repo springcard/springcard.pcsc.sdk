@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{2B380A7F-0692-47B4-9E8D-1B2F18D7AEC8}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NfcToolDesfire</RootNamespace>
+    <AssemblyName>NfcToolDesfire</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\..\..\_output\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\bin\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\..\src\common\lib-cs\pcsc\SpringCardPCSC.cs">
+      <Link>SpringCardPCSC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardBuffer.cs">
+      <Link>SpringCardPCSC_CardBuffer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardChannel.cs">
+      <Link>SpringCardPCSC_CardChannel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardReader.cs">
+      <Link>SpringCardPCSC_CardReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\src\common\lib-cs\pcsc\SpringCardPCSC_Desfire.cs">
+      <Link>SpringCardPCSC_Desfire.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\src\common\lib-cs\pcsc\SpringCardPCSC_ReaderList.cs">
+      <Link>SpringCardPCSC_ReaderList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\src\common\lib-cs\utils\getopt.cs">
+      <Link>getopt.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\src\common\lib-cs\utils\getoptlong.cs">
+      <Link>getoptlong.cs</Link>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

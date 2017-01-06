@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{87072B15-10BD-4AC1-9BB3-789BF8271F4D}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>scscriptorxv</RootNamespace>
+    <AssemblyName>scscriptorxv</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>..\..\_obj\pcscdiag2\$(Configuration)\</IntermediateOutputPath>
+    <WarningLevel>4</WarningLevel>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <ApplicationIcon>scscriptorxv.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>True</Prefer32Bit>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\_output\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>..\..\_obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\..\_output\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseIntermediateOutputPath>..\..\_obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC.cs">
+      <Link>SpringCardPCSC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardBuffer.cs">
+      <Link>SpringCardPCSC_CardBuffer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardChannel.cs">
+      <Link>SpringCardPCSC_CardChannel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CardReader.cs">
+      <Link>SpringCardPCSC_CardReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_Ccid.cs">
+      <Link>SpringCardPCSC_Ccid.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CcidOver.cs">
+      <Link>SpringCardPCSC_CcidOver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CcidOverSerial.cs">
+      <Link>SpringCardPCSC_CcidOverSerial.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_CcidOverNetwork.cs">
+      <Link>SpringCardPCSC_CcidOverNetwork.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\pcsc\SpringCardPCSC_ReaderList.cs">
+      <Link>SpringCardPCSC_ReaderList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\utils\binconvert.cs">
+      <Link>binconvert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\utils\inifile.cs">
+      <Link>inifile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\utils\logger.cs">
+      <Link>logger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\utils\rawdata.cs">
+      <Link>rawdata.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\utils\syslog.cs">
+      <Link>syslog.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\utils\translatable.cs">
+      <Link>translatable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\appconfig.cs">
+      <Link>appconfig.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\apputils.cs">
+      <Link>apputils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\console.cs">
+      <Link>console.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Forms\AboutForm.cs">
+      <Link>AboutForm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Forms\AboutForm.Designer.cs">
+      <Link>AboutForm.Designer.cs</Link>
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Forms\ReaderSelectAnyForm.cs">
+      <Link>ReaderSelectAnyForm.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\common\lib-cs\windows\Forms\ReaderSelectAnyForm.Designer.cs">
+      <Link>ReaderSelectAnyForm.Designer.cs</Link>
+      <DependentUpon>ReaderSelectAnyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\src\common\lib-cs\windows\Forms\AboutForm.resx">
+      <Link>AboutForm.resx</Link>
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\src\common\lib-cs\windows\Forms\ReaderSelectAnyForm.resx">
+      <Link>ReaderSelectAnyForm.resx</Link>
+      <DependentUpon>ReaderSelectAnyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

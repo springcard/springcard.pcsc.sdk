@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_calypso_pcsc", "ref_calypso_pcsc\ref_calypso_pcsc.vcxproj", "{B90F8860-4A74-4F79-9C2C-18F1A0312E42}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_desfire_ev0_pcsc", "ref_desfire_ev0_pcsc\ref_desfire_ev0_pcsc.vcxproj", "{69715D27-6ECE-4264-9467-40F6C69562FD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42} = {B90F8860-4A74-4F79-9C2C-18F1A0312E42}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_desfire_benchmark_pcsc", "ref_desfire_benchmark_pcsc\ref_desfire_benchmark_pcsc.vcxproj", "{F0358FBD-17FA-4EE5-9ADA-D7EE0227A816}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42} = {B90F8860-4A74-4F79-9C2C-18F1A0312E42}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_desfire_ev1_pcsc", "ref_desfire_ev1_pcsc\ref_desfire_ev1_pcsc.vcxproj", "{D213E693-7BD4-4D7E-9B70-FCEFF5E439E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42} = {B90F8860-4A74-4F79-9C2C-18F1A0312E42}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_ledbuz_pcsc", "ref_ledbuz_pcsc\ref_ledbuz_pcsc.vcxproj", "{5A83B855-BFC2-4FAD-B6E2-51F2F5A863FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42} = {B90F8860-4A74-4F79-9C2C-18F1A0312E42}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_memory_pcsc", "ref_memory_pcsc\ref_memory_pcsc.vcxproj", "{D8C5B009-EEDF-4A0A-A1E3-60FAA7E94BD8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42} = {B90F8860-4A74-4F79-9C2C-18F1A0312E42}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_mifare_classic_pcsc", "ref_mifare_pcsc\ref_mifare_pcsc.vcxproj", "{53264455-0F3E-4992-87EC-3DEC2ED6174B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42} = {B90F8860-4A74-4F79-9C2C-18F1A0312E42}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_mifare_plus_pcsc", "ref_mifare_plus_pcsc\ref_mifare_plus_pcsc.vcxproj", "{7E6AD202-04FB-4F71-987D-47DBE412D688}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42} = {B90F8860-4A74-4F79-9C2C-18F1A0312E42}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ref_mifare_ultralight-c_pcsc", "ref_mifare_ultralight-c_pcsc\ref_mifare_ultralight-c_pcsc.vcxproj", "{BD5A6FE6-7314-48DF-85A5-AE83059683D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42} = {B90F8860-4A74-4F79-9C2C-18F1A0312E42}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42}.Debug|Win32.Build.0 = Debug|Win32
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42}.Release|Win32.ActiveCfg = Release|Win32
+		{B90F8860-4A74-4F79-9C2C-18F1A0312E42}.Release|Win32.Build.0 = Release|Win32
+		{69715D27-6ECE-4264-9467-40F6C69562FD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{69715D27-6ECE-4264-9467-40F6C69562FD}.Debug|Win32.Build.0 = Debug|Win32
+		{69715D27-6ECE-4264-9467-40F6C69562FD}.Release|Win32.ActiveCfg = Release|Win32
+		{69715D27-6ECE-4264-9467-40F6C69562FD}.Release|Win32.Build.0 = Release|Win32
+		{F0358FBD-17FA-4EE5-9ADA-D7EE0227A816}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F0358FBD-17FA-4EE5-9ADA-D7EE0227A816}.Debug|Win32.Build.0 = Debug|Win32
+		{F0358FBD-17FA-4EE5-9ADA-D7EE0227A816}.Release|Win32.ActiveCfg = Release|Win32
+		{F0358FBD-17FA-4EE5-9ADA-D7EE0227A816}.Release|Win32.Build.0 = Release|Win32
+		{D213E693-7BD4-4D7E-9B70-FCEFF5E439E5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D213E693-7BD4-4D7E-9B70-FCEFF5E439E5}.Debug|Win32.Build.0 = Debug|Win32
+		{D213E693-7BD4-4D7E-9B70-FCEFF5E439E5}.Release|Win32.ActiveCfg = Release|Win32
+		{D213E693-7BD4-4D7E-9B70-FCEFF5E439E5}.Release|Win32.Build.0 = Release|Win32
+		{5A83B855-BFC2-4FAD-B6E2-51F2F5A863FF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A83B855-BFC2-4FAD-B6E2-51F2F5A863FF}.Debug|Win32.Build.0 = Debug|Win32
+		{5A83B855-BFC2-4FAD-B6E2-51F2F5A863FF}.Release|Win32.ActiveCfg = Release|Win32
+		{5A83B855-BFC2-4FAD-B6E2-51F2F5A863FF}.Release|Win32.Build.0 = Release|Win32
+		{D8C5B009-EEDF-4A0A-A1E3-60FAA7E94BD8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D8C5B009-EEDF-4A0A-A1E3-60FAA7E94BD8}.Debug|Win32.Build.0 = Debug|Win32
+		{D8C5B009-EEDF-4A0A-A1E3-60FAA7E94BD8}.Release|Win32.ActiveCfg = Release|Win32
+		{D8C5B009-EEDF-4A0A-A1E3-60FAA7E94BD8}.Release|Win32.Build.0 = Release|Win32
+		{53264455-0F3E-4992-87EC-3DEC2ED6174B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53264455-0F3E-4992-87EC-3DEC2ED6174B}.Debug|Win32.Build.0 = Debug|Win32
+		{53264455-0F3E-4992-87EC-3DEC2ED6174B}.Release|Win32.ActiveCfg = Release|Win32
+		{53264455-0F3E-4992-87EC-3DEC2ED6174B}.Release|Win32.Build.0 = Release|Win32
+		{7E6AD202-04FB-4F71-987D-47DBE412D688}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7E6AD202-04FB-4F71-987D-47DBE412D688}.Debug|Win32.Build.0 = Debug|Win32
+		{7E6AD202-04FB-4F71-987D-47DBE412D688}.Release|Win32.ActiveCfg = Release|Win32
+		{7E6AD202-04FB-4F71-987D-47DBE412D688}.Release|Win32.Build.0 = Release|Win32
+		{BD5A6FE6-7314-48DF-85A5-AE83059683D2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BD5A6FE6-7314-48DF-85A5-AE83059683D2}.Debug|Win32.Build.0 = Debug|Win32
+		{BD5A6FE6-7314-48DF-85A5-AE83059683D2}.Release|Win32.ActiveCfg = Release|Win32
+		{BD5A6FE6-7314-48DF-85A5-AE83059683D2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

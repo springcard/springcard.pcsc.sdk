@@ -1,0 +1,5 @@
+SpringCard PC/SC SDK
+Version 2016.03
+29/03/2016
+(c) SPRINGCARD SAS - www.springcard.com
+
