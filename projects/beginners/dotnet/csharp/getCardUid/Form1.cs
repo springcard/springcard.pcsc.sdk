@@ -169,7 +169,8 @@ namespace getCardUid
                 }
                 CAPDU capdu = new CAPDU(0xFF, 0xCA, 0x00, 0x00);    // Command sent to the reader
                 RAPDU rapdu = channel.Transmit(capdu);              // Response sent from card
-                if(rapdu.SW != 0x9000)                              // Something failed
+//                if(rapdu.SW != 0x9000)                              // Something failed
+                if(rapdu.SW == 0x9000)                              // Sryn: Changed the inequality
                 {
                     lblCardUid.Text = "Get UID APDU failed!";
                     return;
