@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sprincard-multitest>
+  <title>SpringProx</title>
+  <tree>  
+    <node title="RF interface">
+      <script title="Stop" descr="Stop all RF operations">
+        <command>582200</command>
+      </script>    
+      <script title="Start / Resume" descr="Resume normal RF operation">
+        <command>582300</command>
+      </script>    
+      <script title="RF OFF" descr="Turns RF field OFF">
+        <command>582200</command>
+        <command>580A00</command>
+      </script>    
+      <script title="RF ON" descr="Turns RF field ON, without modulation">
+        <command>582200</command>
+        <command>580A01</command>
+      </script>
+    </node>      
+    <node title="ISO 14443-A">
+      <script title="Enter 14443-A" descr="Configure for ISO 14443-A">
+        <command>580C01</command>
+      </script>
+      <script title="REQA" descr="Send REQA">        
+        <loop>
+          <command>581904</command>
+        </loop>
+      </script>
+      <script title="WUPA" descr="Send WUPA">
+        <loop>
+          <command>581905</command>
+        </loop>
+      </script>
+      <script title="Anticoll seq." descr="Configure for ISO 14443-A, anti-collision + select sequence after WUPA">
+        <loop>
+          <command>40</command>
+        </loop>
+      </script>
+    </node>
+    <node title="ISO 14443-B">
+      <script title="Enter 14443-B" descr="Configure for ISO 14443-B">
+        <command>580C02</command>
+      </script>      
+      <script title="REQB" descr="Send REQB">
+        <loop>
+          <command>581906</command>
+        </loop>
+      </script>
+      <script title="WUPB" descr="Send WUPB">
+        <loop>
+          <command>581907</command>
+        </loop>
+      </script>
+      <script title="B Attrib" descr="Attrib sequence after WUPB">
+        <loop>
+          <command>40</command>
+        </loop>
+      </script>
+    </node>
+    <node title="Main card slot (ID-1)">
+      <script title="Stop" descr="Stop the slot">
+        <command>582201</command>
+      </script>    
+      <script title="Start / Resume" descr="Resume normal operation on the slot">
+        <command>582301</command>
+      </script>    
+      <script title="Insert" descr="Simulate card insert / Force card present">
+        <command>58400100</command>
+      </script>    
+      <script title="Remove" descr="Simulate card remove / Force card absent">
+        <command>58400101</command>
+      </script>
+    </node>          
+    <node title="First SAM slot">
+      <script title="Stop" descr="Stop the slot">
+        <command>582202</command>
+      </script>    
+      <script title="Start / Resume" descr="Resume normal operation on the slot">
+        <command>582302</command>
+      </script>    
+      <script title="Insert" descr="Simulate card insert / Force card present">
+        <command>58400201</command>
+      </script>    
+      <script title="Remove" descr="Simulate card remove / Force card absent">
+        <command>58400200</command>
+      </script>
+    </node>              
+    <node title="LEDs and buzzer">
+      <script title="LED1">
+        <command>581E01000000</command>
+      </script>
+      <script title="LED2">
+        <command>581E00010000</command>
+      </script>
+      <script title="LED3">
+        <command>581E00000100</command>
+      </script>
+      <script title="LED4">
+        <command>581E00000001</command>
+      </script>
+      <script title="LEDs all ON">
+        <command>581E01010101</command>
+      </script>      
+      <script title="LEDs OFF">
+        <command>581E00000000</command>
+      </script>
+      <script title="LEDs auto">
+        <command>58 1E</command>
+      </script>      
+      <script title="Buzzer">
+        <command>581C012C</command>
+      </script>
+      <script title="Buzzer auto">
+        <command>58 1C</command>
+      </script>      
+    </node>
+    <node title="Config">
+      <script title="Factory reset">
+        <command>58 0D FFFADA</command>
+      </script>    
+    </node>
+    <node title="Trace/Debug">
+      <script title="Trace Core">
+        <command>58 8D CD 0001 00</command>
+      </script>
+      <script title="Trace Core+Comm">
+        <command>58 8D CD 0007 00</command>
+      </script>
+      <script title="Trace Micore">
+        <command>58 8D CD 0090 00</command>
+      </script>      
+      <script title="Trace CL Proto">
+        <command>58 8D CD 00A0 00</command>
+      </script>
+      <script title="Trace Micore + CL Proto">
+        <command>58 8D CD 00B0 00</command>
+      </script>
+      <script title="Trace Smartcard">
+        <command>58 8D CD 0140 00</command>
+      </script>
+      <script title="Trace Smartcard (detailed)">
+        <command>58 8D CD 0140 FF</command>
+      </script>      
+      <script title="Trace CCID">
+        <command>58 8D BD FF</command>
+      </script>
+      <script title="Trace OFF">
+        <command>58 8D CD 0000 00</command>
+        <command>58 8D BD 00</command>
+      </script>      
+    </node>
+    <node title="Misc.">
+      <script title="Get serial number">
+        <command>58 20 83</command>
+      </script>
+      <script title="Reset">
+        <command>58 8E DEAD</command>
+      </script>
+      <script title="Enter flash mode">
+        <command>58 8E FADAFADA</command>
+      </script>      
+    </node>
+    <node title="Specific">
+      <script title="Benchmark CL+C">
+        <command>58 8D B0 0003</command>
+        <command>58 8D B3 3C</command>
+        <command>58 8D C4 0000</command>
+        <command>58 8D C5 000101009999</command>
+        <command>58 8D C3 3131313131</command>
+      </script>
+    </node>    
+  </tree>
+</sprincard-multitest>

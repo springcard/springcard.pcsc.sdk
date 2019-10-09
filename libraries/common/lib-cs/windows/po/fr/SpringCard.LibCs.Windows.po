@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SpringCard.LibCs.Windows\n"
+"POT-Creation-Date: 2017-11-30 16:35+0100\n"
+"PO-Revision-Date: 2017-11-30 16:37+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: ;T\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: Forms/AboutForm.cs:27
+msgid "About..."
+msgstr "A propos..."
+
+#: Forms/AboutForm.cs:28
+msgid "Versions"
+msgstr "Versions"
+
+#: Forms/AboutForm.cs:29
+msgid "System"
+msgstr "Système"
+
+#: Forms/AboutForm.cs:30
+msgid "Licences"
+msgstr "Licences"
+
+#: Forms/AboutForm.cs:31
+msgid "Trademarks"
+msgstr "Trademarks"
+
+#: Forms/AboutForm.cs:32
+msgid "More..."
+msgstr "Plus..."
+
+#: Forms/CreatePassphraseForm.cs:24
+msgid "Encrypt content"
+msgstr "Crypter le contenu"
+
+#: Forms/CreatePassphraseForm.cs:25
+msgid ""
+"This content will be protected by a passphrase. It is important that you "
+"keep this passphrase secret, and do not forget it."
+msgstr ""
+"Ce contenu doit être protégé par une passphrase (\"phrase de passe\"). Il "
+"est important que cette passphrase reste secrète, mais vous ne devez pas "
+"l'oublier !"
+
+#: Forms/CreatePassphraseForm.cs:26 Forms/EnterPassphraseForm.cs:26
+msgid "Passphrase:"
+msgstr "Passphrase:"
+
+#: Forms/CreatePassphraseForm.cs:29 Forms/EnterPassphraseForm.cs:30
+msgid "OK"
+msgstr "OK"
+
+#: Forms/CreatePassphraseForm.cs:30 Forms/EnterPassphraseForm.cs:31
+#: Forms/WizardParentForm.cs:92
+msgid "Cancel"
+msgstr "Annuler"
+
+#: Forms/EnterPassphraseForm.cs:24
+msgid "Encrypted content"
+msgstr "Contenu crypté"
+
+#: Forms/EnterPassphraseForm.cs:25
+msgid "This content is protected. Please enter the passphrase to decrypt it."
+msgstr ""
+"Ce contenu est protégé par une passphrase (\"phrase de passe\"). Veuillez "
+"saisir la passphrase pour le décrypter."
+
+#: Forms/EnterPassphraseForm.cs:27
+msgid "Show passphrase"
+msgstr "Afficher la passphrase"
+
+#: Forms/EnterPassphraseForm.cs:28
+msgid "Remember this passphrase until I close the application"
+msgstr ""
+"Ne plus me redemander la passphrase jusqu'à la fermeture de l'application"
+
+#: Forms/WizardParentForm.cs:95
+msgid "Close"
+msgstr "Fermer"
+
+#: Forms/WizardParentForm.cs:98
+msgid "Exit"
+msgstr "Sortie"
+
+#: Forms/WizardParentForm.cs:101
+msgid "Terminate"
+msgstr "Terminer"
+
+#: appmru.cs:84
+msgid "Clear list"
+msgstr "Vider la liste"
+
+#: appmru.cs:186
+msgid "Bad argument"
+msgstr "Argument incorrect"
+
+#: winutils.cs:14
+msgid "This is a fatal error. The application will now terminate."
+msgstr "Ceci est une erreur fatale. L'application va se terminer."

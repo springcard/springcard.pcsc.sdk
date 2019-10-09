@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{E0086466-5757-46DC-BF8E-3F27321F0AA1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NfcBeam</RootNamespace>
+    <AssemblyName>NfcBeam</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <ApplicationIcon>NfcBeam.ico</ApplicationIcon>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputPath>..\..\..\..\_output\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <IntermediateOutputPath>obj\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+    <IntermediateOutputPath>obj\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>..\..\..\..\_output\NfcForum\NfcBeam\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\..\..\_output\NfcForum\NfcBeam\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Be.Windows.Forms.HexBox, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\binaries\Be.Windows.Forms.HexBox.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs">
+      <HintPath>..\..\..\..\binaries\dotnet\SpringCard.LibCs.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Windows">
+      <HintPath>..\..\..\..\binaries\dotnet\SpringCard.LibCs.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Windows.Forms">
+      <HintPath>..\..\..\..\binaries\dotnet\SpringCard.LibCs.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC">
+      <HintPath>..\..\..\..\binaries\dotnet\SpringCard.PCSC.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC.Forms">
+      <HintPath>..\..\..\..\binaries\dotnet\SpringCard.PCSC.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC.NfcForum">
+      <HintPath>..\..\..\..\binaries\dotnet\SpringCard.PCSC.NfcForum.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\common\RtdControl.cs">
+      <Link>Controls\RtdControl.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\common\RtdControl.Designer.cs">
+      <Link>Controls\RtdControl.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\common\RtdMediaControl.cs">
+      <Link>Controls\RtdMediaControl.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\common\RtdMediaControl.Designer.cs">
+      <Link>Controls\RtdMediaControl.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\common\RtdSmartPosterControl.cs">
+      <Link>Controls\RtdSmartPosterControl.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\common\RtdSmartPosterControl.Designer.cs">
+      <Link>Controls\RtdSmartPosterControl.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\common\RtdTextControl.cs">
+      <Link>Controls\RtdTextControl.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\common\RtdTextControl.Designer.cs">
+      <Link>Controls\RtdTextControl.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\common\RtdUriControl.cs">
+      <Link>Controls\RtdUriControl.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\common\RtdUriControl.Designer.cs">
+      <Link>Controls\RtdUriControl.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\common\RtdVCardControl.cs">
+      <Link>Controls\RtdVCardControl.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\common\RtdVCardControl.Designer.cs">
+      <Link>Controls\RtdVCardControl.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\common\RtdWifiHandoverControl.cs">
+      <Link>Controls\RtdWifiHandoverControl.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\common\RtdWifiHandoverControl.Designer.cs">
+      <Link>Controls\RtdWifiHandoverControl.Designer.cs</Link>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NdefDisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NdefDisplayForm.Designer.cs">
+      <DependentUpon>NdefDisplayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\common\RtdControl.resx">
+      <Link>Controls\RtdControl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\common\RtdMediaControl.resx">
+      <Link>Controls\RtdMediaControl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\common\RtdSmartPosterControl.resx">
+      <Link>Controls\RtdSmartPosterControl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\common\RtdTextControl.resx">
+      <Link>Controls\RtdTextControl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\common\RtdUriControl.resx">
+      <Link>Controls\RtdUriControl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\common\RtdVCardControl.resx">
+      <Link>Controls\RtdVCardControl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\common\RtdWifiHandoverControl.resx">
+      <Link>Controls\RtdWifiHandoverControl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NdefDisplayForm.resx">
+      <DependentUpon>NdefDisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

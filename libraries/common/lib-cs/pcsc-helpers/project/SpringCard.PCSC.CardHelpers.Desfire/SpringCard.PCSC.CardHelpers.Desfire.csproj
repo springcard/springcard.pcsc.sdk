@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{744CB87B-6579-43AC-AA99-F3E78DA3FF21}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SpringCard.PCSC.CardHelpers.Desfire</RootNamespace>
+    <AssemblyName>SpringCard.PCSC.CardHelpers.Desfire</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="SpringCard.LibCs">
+      <HintPath>..\..\..\..\..\..\binaries\dotnet\SpringCard.LibCs.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC, Version=18.1.6850.26902, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\binaries\dotnet\SpringCard.PCSC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire.cs">
+      <Link>DESFire.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_auth.cs">
+      <Link>DESFire_auth.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_cipher.cs">
+      <Link>DESFire_cipher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_cmac.cs">
+      <Link>DESFire_cmac.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_const.cs">
+      <Link>DESFire_const.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_core.cs">
+      <Link>DESFire_core.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_crc.cs">
+      <Link>DESFire_crc.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_crypto.cs">
+      <Link>DESFire_crypto.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_files.cs">
+      <Link>DESFire_files.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_keys.cs">
+      <Link>DESFire_keys.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_mac.cs">
+      <Link>DESFire_mac.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_mgmt.cs">
+      <Link>DESFire_mgmt.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_read.cs">
+      <Link>DESFire_read.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_records.cs">
+      <Link>DESFire_records.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_trans.cs">
+      <Link>DESFire_trans.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_types.cs">
+      <Link>DESFire_types.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_wrap.cs">
+      <Link>DESFire_wrap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Desfire\DESFire_write.cs">
+      <Link>DESFire_write.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpringCard.PCSC.CardHelpers\SpringCard.PCSC.CardHelpers.csproj">
+      <Project>{35e48f93-e7da-441e-9743-10c8ca5ade03}</Project>
+      <Name>SpringCard.PCSC.CardHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) I:\projects\binaries\common\lib-cs</PostBuildEvent>
+  </PropertyGroup>
+</Project>

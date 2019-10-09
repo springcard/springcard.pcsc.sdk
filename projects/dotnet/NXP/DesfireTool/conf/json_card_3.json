@@ -1,0 +1,83 @@
+{
+    "Applications" : {
+		"414553" : {
+			"KeyType" : "aes",
+			"KeyCount" : 7,
+			"Keys" : {
+				"01" : "101112131415161718191A1B1C1D1E1F",
+				"02" : "202122232425262728292A2B2C2D2E2F",
+				"03" : "303132333435363738393A3B3C3D3E3F",
+				"04" : "404142434445464748494A4B4C4D4E4F",
+				"05" : "505152535455565758595A5B5C5D5E5F",
+				"06" : "606162636465666768696A6B6C6D6E6F"
+			},
+			"Files" : {
+				"1" : {
+					"Type" : "standard",
+					"CommMode" : "maced",
+					"ReadKeyIdx" : "01",
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"Size" : 28,
+					"Data" : "5374644461746146696C65204445534669726520544445532D4D4143"
+				},
+				"2" : {
+					"Type" : "value",
+					"CommMode" : "maced",
+					"ReadKeyIdx" : "02",
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"ValueMin" : 0,
+					"ValueMax" : 500,
+					"Value" : 250
+				},
+				"3" : {
+					"Type" : "cyclic",
+					"CommMode" : "maced",
+					"ReadKeyIdx" : "03",
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"RecordSize" : 25,
+					"RecordCount" : 2,					
+					"Data" : "4379636C6963205265636F726420446573666972652D4D4143"
+				},
+				"4" : {
+					"Type" : "standard",
+					"CommMode" : "secure",
+					"ReadKeyIdx" : "04",
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"Size" : 38,
+					"Data" : "5374644461746146696C65204445534669726520544445532D46756C6C204369706865726564"
+				},
+				"5" : {
+					"Type" : "value",
+					"CommMode" : "secure",
+					"ReadKeyIdx" : "05",
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"ValueMin" : 0,
+					"ValueMax" : 400000000,
+					"Value" : 305419896
+				},
+				"6" : {
+					"Type" : "cyclic",
+					"CommMode" : "secure",
+					"ReadKeyIdx" : "06",
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"RecordSize" : 36,
+					"RecordCount" : 2,					
+					"Data" : "4379636C6963205265636F726420446573666972652D46756C6C79204369706865726564"
+				}
+			}
+		}
+    }
+}
+ 

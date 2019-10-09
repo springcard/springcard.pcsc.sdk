@@ -1,0 +1,47 @@
+{
+    "Applications" : {
+		"334B54" : {
+			"KeyType" : "3des3k",
+			"KeyCount" : 7,
+			"Keys" : {
+				"03" : "242322212019181716151413121110090807060504030201",
+				"04" : "010203040506070809101112131415161718192021222324",
+				"06" : "11992288337766445500aabbccddeeff0f1e2d3c4b5a6978"
+			},
+			"Files" : {
+				"3" : {
+					"Type" : "cyclic",
+					"CommMode" : "maced",
+					"ReadKeyIdx" : "03",
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"RecordSize" : 25,
+					"RecordCount" : 2,					
+					"Data" : "4379636C6963205265636F726420446573666972652D4D4143"
+				},
+				"4" : {
+					"Type" : "standard",
+					"CommMode" : "secure",
+					"ReadKeyIdx" : "04",					
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"Size" : 38,
+					"Data" : "5374644461746146696C65204445534669726520544445532D46756C6C204369706865726564"
+				},				
+				"6" : {
+					"Type" : "standard",
+					"CommMode" : "secure",
+					"ReadKeyIdx" : "06",
+					"ReadWriteKeyIdx" : "00",
+					"WriteKeyIdx" : "00",
+					"AdminKeyIdx" : "00",
+					"Size" : 36,
+					"Data" : "4379636C6963205265636F726420446573666972652D46756C6C79204369706865726564"
+				}
+			}
+		}		
+    }
+}
+ 

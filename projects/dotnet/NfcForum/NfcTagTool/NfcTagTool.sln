@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+# SharpDevelop 5.1
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfcTagTool", "NfcTagTool.csproj", "{FE43CE6E-CAF2-45DE-BF4B-E63D38BADF87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfcTagToolDesfire", "NfcTagToolDesfire\NfcTagToolDesfire.csproj", "{2B380A7F-0692-47B4-9E8D-1B2F18D7AEC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE43CE6E-CAF2-45DE-BF4B-E63D38BADF87}.Debug|x86.ActiveCfg = Debug|x86
+		{FE43CE6E-CAF2-45DE-BF4B-E63D38BADF87}.Debug|x86.Build.0 = Debug|x86
+		{FE43CE6E-CAF2-45DE-BF4B-E63D38BADF87}.Release|x86.ActiveCfg = Release|x86
+		{FE43CE6E-CAF2-45DE-BF4B-E63D38BADF87}.Release|x86.Build.0 = Release|x86
+		{2B380A7F-0692-47B4-9E8D-1B2F18D7AEC8}.Debug|x86.ActiveCfg = Debug|x86
+		{2B380A7F-0692-47B4-9E8D-1B2F18D7AEC8}.Debug|x86.Build.0 = Debug|x86
+		{2B380A7F-0692-47B4-9E8D-1B2F18D7AEC8}.Release|x86.ActiveCfg = Release|x86
+		{2B380A7F-0692-47B4-9E8D-1B2F18D7AEC8}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

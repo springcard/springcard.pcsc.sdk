@@ -1,0 +1,16 @@
+SelectApplication --application-id=000000
+Authenticate --key-id=00 --key-value=00000000000000000000000000000000
+FormatPICC
+CreateApplication --application-id=334B54 --key-settings=0F47
+SelectApplication --application-id=334B54
+CreateCyclicRecordFile --file-id=03 --comm-mode=01 --access-rights=3000 --size=25 --count=2 
+CreateStdDataFile --file-id=04 --comm-mode=03 --access-rights=4000 --size=38
+CreateStdDataFile --file-id=06 --comm-mode=03 --access-rights=6000 --size=36
+AuthenticateISO --key-id=00 --key-value=000000000000000000000000000000000000000000000000
+WriteRecord --file-id=03 --comm-mode=01 --number=0 --data=4379636C6963205265636F726420446573666972652D4D4143
+CommitTransaction 
+WriteData --file-id=04 --comm-mode=03 --offset=0 --data=5374644461746146696C65204445534669726520544445532D46756C6C204369706865726564
+WriteData --file-id=06 --comm-mode=03 --offset=0 --data=4379636C6963205265636F726420446573666972652D46756C6C79204369706865726564
+ChangeKey --key-id=03 --old-key-value=000000000000000000000000000000000000000000000000 --key-value=242322212019181716151413121110090807060504030201
+ChangeKey --key-id=04 --old-key-value=000000000000000000000000000000000000000000000000 --key-value=010203040506070809101112131415161718192021222324
+ChangeKey --key-id=06 --old-key-value=000000000000000000000000000000000000000000000000 --key-value=11992288337766445500aabbccddeeff0f1e2d3c4b5a6978

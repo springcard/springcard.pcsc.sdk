@@ -1,0 +1,5 @@
+SpringCard PC/SC SDK
+Version 19.10
+(revision 19.10-2-g99c1c8ba, assembled by johann 191009 1203)
+(c) SPRINGCARD SAS, France - www.springcard.com
+Read LICENSE.txt for license and copyright information

@@ -1,0 +1,333 @@
+
+// Debug flag
+#ifndef kaaDEBUG
+	#define	kaaDEBUG 1			// set to 1 to print debug informations
+#endif
+
+// includes necessary only for debug functions
+#if kaaDEBUG
+#include <stdarg.h>			// for debug: vprintf in debugPrintf
+#include <stdio.h>			// for printf
+#endif
+
+// system includes
+#include <string.h>			// for memcpy and memset
+#include <time.h>			// for date/time computations and for pauses
+
+// low level api of the card reader
+#include "LowLevelAPI.h"
+
+
+#define kAntiPassBackDelay 30   // JDA : was 600
+#define kInterchangeDelay 120   // JDA : was 3600
+
+// -------------------------------------------------------------------------
+//								CONSTANTS
+// -------------------------------------------------------------------------
+
+// Version of this Audit Application
+#define kVersion						"1.0.5"
+
+// Audit errors, as defined in 090602-LT-AuditApplication
+#define kSTATE_NOT_OPEN					-1
+#define kSTATE_OK						0
+#define kSTATE_NOK						1
+#define kSTATE_ABORT					2
+#define kSTATE_ACTION_REQUIRED			3
+
+// Network ID of Brussels for personalization
+#define kBRUSSEL_NETWK_ID				0x056002		// as defined in 090602-LT-AuditApplication
+
+// Location ID of the terminal to be added in events, etc.
+#define kLocationId						0x4348			// location ID, must not be null
+
+// Event codes
+#define kEventSubwayEntry				0x31
+#define kEventSubwayEntryInterchange	0x36
+#define kEventSubwayContractLoading		0x3D 
+#define kEventSubwayPersonalization		0x37
+#define kEventSubwayInvalidation		0x3F
+#define kEventSubwayRehabilitation		0x34
+#define kEventSubwayPINverified			0x32
+#define kEventSubwayPINchanged			0x33
+#define kEventSubwayTest				0x35
+
+// Version of the different data structures
+#define kVersionEnvApplication			1
+#define kVersionId						1
+#define kVersionContract				1
+#define kVersionEvent					1
+#define kVersionSpecialEvent			1
+
+// Tariff
+#define kTARIFF_BOOK_COUNTER			0
+#define kTARIFF_SV						1
+#define kTARIFF_BOOK_COUNTER_SE			2
+#define kTARIFF_SEASON					3
+#define kTARIFF_SEASON_AUTH				4
+
+// AID max length
+#define kAidMaxLength					16
+
+// buffer length for file records and commands
+#define kBufferLength					128
+
+// Event fields offsets (in bytes)
+#define kEventVersionNumber				 0
+#define kEventDateStamp					 1
+#define kEventTimeStamp					 3	
+#define kEventFirstDateStamp			 5			
+#define kEventFirstTimeStamp			 7			
+#define kEventLocationId				 9		
+#define kEventCode						11
+
+
+// -------------------------------------------------------------------------
+//								GLOBALS
+// -------------------------------------------------------------------------
+
+unsigned char	gAID___[]		= { 0x31, 0x54, 0x49, 0x43, 0x2E, 0x49, 0x43, 0x41 };
+
+
+// AID used during the audit (constants)
+
+// "1TIC.ICALT"
+unsigned char	gAID_LT[]		= { 0x31, 0x54, 0x49, 0x43, 0x2E, 0x49, 0x43, 0x41, 0x4C, 0x54 };
+
+// "1TIC.ICALS"
+unsigned char	gAID_LS[]		= { 0x31, 0x54, 0x49, 0x43, 0x2E, 0x49, 0x43, 0x41, 0x4C, 0x53 };
+
+// Constant: PIN
+unsigned char	gPIN[]			= { 0x31, 0x32, 0x33, 0x34 };
+unsigned char	gNewPIN[]		= { 0x34, 0x33, 0x32, 0x31 };
+
+// coupler informations
+unsigned char	gCouplerVersion[ 16 ];
+
+// current card informations
+unsigned char	gAID[ kAidMaxLength ];
+unsigned char	gAIDLength;
+unsigned char	gSerialNumber[ 8 ];
+unsigned char	gInfos[ 7 ];
+unsigned char	gRatified;
+
+// records read in the files of the current card
+unsigned char	gEnvironmentRecord[ kBufferLength ];
+unsigned char	gEnvironmentRecordLength;
+
+unsigned char	gEventRecord[ kBufferLength ];
+unsigned char	gEventRecordLength;
+
+
+// -------------------------------------------------------------------------
+//								DEBUG FUNCTIONS
+// -------------------------------------------------------------------------
+
+/*
+	Print a byte array in hexadecimal, with the array name
+ */
+void debugPrintByteArray
+	(
+	char *				inName,				// Name of the array
+	unsigned char *		inArray,			// Array to display
+	int					inArrayLength		// Length of the array
+	)
+	{
+	#if kaaDEBUG
+		int vi;
+
+		printf( "%s: (%d) ", inName, inArrayLength );
+		for( vi = 0 ; vi < inArrayLength ; vi++ )
+			{
+			printf("%02X ", inArray[ vi ]);
+			}
+
+		printf("\n");
+	#endif
+	}
+
+
+//------------------------------------------------------
+/**
+ * Function to display log to the console in debug mode.
+ * @param inMessage		Message to display
+ */
+void debugPrintf
+	(
+	const char* inFormatMessage,
+	...
+	)
+	{
+	#if kaaDEBUG
+		va_list		vListArg;
+
+		va_start( vListArg, inFormatMessage );
+		vprintf( inFormatMessage, vListArg );
+	#endif
+	}
+
+
+
+
+
+//------------------------------------------------------
+/*
+	Personnalization of the card
+*/
+int processPerso( unsigned char EnvHolderId )
+	{
+	unsigned char	vSW[ 2 ];
+	int				vPoResult				= kSUCCESS;
+	int				vResult					= kSTATE_OK;
+
+	debugPrintf( ">> processPerso\n");
+	
+	//a.		Close the session discarding the possible modifications.
+	vPoResult	= poSessionClose( kCLOSE_CANCEL, vSW );
+	if( vPoResult != kSUCCESS || vSW[0] != 0x90 || vSW[1] != 0x00 )
+		vResult = kSTATE_NOK;
+
+	//b.	Open a session with key #1, without reading a file (SFI=00h, RecNum=0).
+	if( vResult == kSTATE_OK )
+		{
+		vPoResult = poSessionOpen( 1, 0, 0, &gRatified, NULL, NULL, vSW );
+		if( vPoResult != kSUCCESS || vSW[0] != 0x90 || vSW[1] != 0x00)
+			vResult = kSTATE_NOK;
+		}
+
+	//c.	Update the first record of the file SFI=07h (Environment):
+	if( vResult == kSTATE_OK )
+		{
+		gEnvironmentRecordLength						= 0;
+		//EnvApplicationVersionNumber =	1
+		gEnvironmentRecord[gEnvironmentRecordLength++]	= kVersionEnvApplication;
+		//EnvNetworkId =	Brussels area
+		gEnvironmentRecord[gEnvironmentRecordLength++]	= (kBRUSSEL_NETWK_ID >> 16)	& 0xFF;
+		gEnvironmentRecord[gEnvironmentRecordLength++]	= (kBRUSSEL_NETWK_ID >> 8)  & 0xFF;
+		gEnvironmentRecord[gEnvironmentRecordLength++]	= kBRUSSEL_NETWK_ID			& 0xFF;
+		//EnvHolderId 
+		gEnvironmentRecord[gEnvironmentRecordLength++]	= 0;
+    gEnvironmentRecord[gEnvironmentRecordLength++]	= 0;
+    gEnvironmentRecord[gEnvironmentRecordLength++]	= 0;
+    gEnvironmentRecord[gEnvironmentRecordLength++]	= EnvHolderId;
+
+		vPoResult = poRecordUpdate(1, kSfiEnvironment, gEnvironmentRecord, gEnvironmentRecordLength, vSW);
+		if( vPoResult != kSUCCESS || vSW[0] != 0x90 || vSW[1] != 0x00 )
+			vResult = kSTATE_NOK;
+		}
+
+	//d.	Ratify the session NOW
+	if( vResult == kSTATE_OK )
+		{
+		(void) poSessionClose( kCLOSE_IMMEDIATE_RATIFICATION, vSW );
+		if( vPoResult != kSUCCESS || vSW[0] != 0x90 || vSW[1] != 0x00 )
+			vResult = kSTATE_NOK;
+		}
+
+	//e.	Return OK.
+	return vResult;
+	}
+
+
+
+// -------------------------------------------------------------------------
+//							MAIN LOOP
+// -------------------------------------------------------------------------
+
+int main
+	(
+	int			argc,					// standard main arguments, not used here
+	char **		argv					// ...
+	)
+	{
+	unsigned char	vSW[ 2 ];			// Status Word returned by the card
+	int				vPoResult;			// Card Reader function result
+	int				vCurrentState;		// Current algorithm state
+
+	//--------------------------
+	//a.	Do all required initializations and get the version of the OEM Reader firmware.
+	//--------------------------
+	debugPrintf("# Audit Application - V%s\n#  Simple terminal application for the Calypso Registration Audit.\n", kVersion);
+
+	// Get coupler Version and display it
+	vPoResult = poGetVersion( gCouplerVersion );
+
+	debugPrintf("#  Reader Version: ");
+	if( vPoResult != kSUCCESS)
+		{
+		debugPrintf( "Not found.\n");
+		gCouplerVersion[ 0 ] = 0;
+		}
+	else
+		debugPrintf( "%s\n", gCouplerVersion );
+
+	// main loop of the audit application
+	for(;;)
+		{
+		vCurrentState		= kSTATE_OK;		// no error for now, initialized before every new card search
+
+		//--------------------------
+		//b.	Search a portable object (with automatic selection with AID beginning with "1TIC.ICALT").
+		//--------------------------
+
+		gAIDLength = 0; // JDA
+		vPoResult = poDetect( gAID_LT, sizeof( gAID_LT ), gAID, &gAIDLength, gSerialNumber, gInfos );
+
+		// if card not found, loop to search a new card
+		if( vPoResult != kSUCCESS)
+			continue;						//>>>>>>>>>> CONTINUE
+
+		//--------------------------
+		//c.	If a portable object is found, but not the application requested, select the application "1TIC.ICALS".
+		//--------------------------
+		if( gAIDLength == 0 )
+			vPoResult = poApplicationSelect( gAID_LS, sizeof( gAID_LS ), gAID, &gAIDLength, gSerialNumber, gInfos, vSW );
+
+// JDA TODO ::: try with default AID
+		if( gAIDLength == 0 )
+			vPoResult = poApplicationSelect( gAID___, sizeof( gAID___ ), gAID, &gAIDLength, gSerialNumber, gInfos, vSW );
+
+
+		//--------------------------
+		//d.	If the application is not found, NOK to user, and continue to step m.
+		//--------------------------
+		// use gAIDLength and not vSW because vSW is not intialized, if poDetect returns the right AID 
+		if( vPoResult != kSUCCESS || gAIDLength == 0 ) 
+			{
+			(void) poSignalState( kSignal_NOK );
+			vCurrentState = kSTATE_NOT_OPEN;
+			}
+
+		//--------------------------
+		//e.	Start a validation by opening a session with key #3, reading the record 1 of the file SFI=07h (Environment).
+		//--------------------------
+		if( vCurrentState == kSTATE_OK )
+			{
+			debugPrintByteArray( "gAID", gAID, gAIDLength );
+      debugPrintByteArray( "gSerialNumber", gSerialNumber, sizeof(gSerialNumber) );
+      debugPrintByteArray( "gInfos", gInfos, sizeof(gInfos) );
+
+			vPoResult = poSessionOpen( 3, 1, kSfiEnvironment, &gRatified, gEnvironmentRecord, &gEnvironmentRecordLength, vSW );
+
+			if( vPoResult != kSUCCESS || vSW[0] != 0x90 || vSW[1] != 0x00 )
+				vCurrentState = kSTATE_ABORT;
+			else
+				debugPrintByteArray( "gEnvironmentRecord", gEnvironmentRecord, gEnvironmentRecordLength );
+			}
+
+
+		if( vCurrentState == kSTATE_OK)
+			{
+			vCurrentState = processPerso();
+			}
+
+		(void) poRelease();
+		
+		//--------------------------
+		//n.	Continue to step b.
+		//--------------------------
+		}
+	}
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////

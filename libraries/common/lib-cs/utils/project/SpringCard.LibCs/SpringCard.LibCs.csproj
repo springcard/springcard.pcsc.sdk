@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{D9558EB9-6481-40D0-AD4A-8C1E21F56E2B}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SpringCard.LibCs</RootNamespace>
+    <AssemblyName>SpringCard.LibCs</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\appinfo.cs">
+      <Link>appinfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\appupdater.cs">
+      <Link>appupdater.cs</Link>
+    </Compile>
+    <Compile Include="..\..\asn1tlv.cs">
+      <Link>asn1tlv.cs</Link>
+    </Compile>
+    <Compile Include="..\..\binconvert.cs">
+      <Link>binconvert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\binutils.cs">
+      <Link>binutils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\cfgfile.cs">
+      <Link>cfgfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\cliutils.cs">
+      <Link>cliutils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\commsettings.cs">
+      <Link>commsettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\config.cs">
+      <Link>config.cs</Link>
+    </Compile>
+    <Compile Include="..\..\csvfile.cs">
+      <Link>csvfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\fileutils.cs">
+      <Link>fileutils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\gelf.cs">
+      <Link>gelf.cs</Link>
+    </Compile>
+    <Compile Include="..\..\getopt.cs">
+      <Link>getopt.cs</Link>
+    </Compile>
+    <Compile Include="..\..\getoptlong.cs">
+      <Link>getoptlong.cs</Link>
+    </Compile>
+    <Compile Include="..\..\hash.cs">
+      <Link>hash.cs</Link>
+    </Compile>
+    <Compile Include="..\..\inifile.cs">
+      <Link>inifile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\interactions.cs">
+      <Link>interactions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\json.cs">
+      <Link>json.cs</Link>
+    </Compile>
+    <Compile Include="..\..\jsonconfig.cs">
+      <Link>jsonconfig.cs</Link>
+    </Compile>
+    <Compile Include="..\..\keyvalue.cs">
+      <Link>keyvalue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\LICENSE.cs">
+      <Link>LICENSE.cs</Link>
+    </Compile>
+    <Compile Include="..\..\logger.cs">
+      <Link>logger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\nddu.cs">
+      <Link>nddu.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ping.cs">
+      <Link>ping.cs</Link>
+    </Compile>
+    <Compile Include="..\..\random.cs">
+      <Link>random.cs</Link>
+    </Compile>
+    <Compile Include="..\..\rawdata.cs">
+      <Link>rawdata.cs</Link>
+    </Compile>
+    <Compile Include="..\..\restclient.cs">
+      <Link>restclient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\strutils.cs">
+      <Link>strutils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\syslog.cs">
+      <Link>syslog.cs</Link>
+    </Compile>
+    <Compile Include="..\..\systemexec.cs">
+      <Link>systemexec.cs</Link>
+    </Compile>
+    <Compile Include="..\..\systeminfo.cs">
+      <Link>systeminfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Gnu.Getopt.MessagesBundle.resx">
+      <Link>Gnu.Getopt.MessagesBundle.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) I:\projects\binaries\common\lib-cs</PostBuildEvent>
+  </PropertyGroup>
+</Project>

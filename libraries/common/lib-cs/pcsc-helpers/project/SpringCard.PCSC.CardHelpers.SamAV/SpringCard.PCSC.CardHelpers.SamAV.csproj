@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{921E5CEE-7BCD-4F90-AAFA-FAAD4AE2ED98}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpringCard.PCSC.CardHelpers.SamAV</RootNamespace>
+    <AssemblyName>SpringCard.PCSC.CardHelpers.SamAV</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SpringCard.LibCs">
+      <HintPath>..\..\..\..\..\..\binaries\dotnet\SpringCard.LibCs.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC, Version=18.1.6850.26902, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\binaries\dotnet\SpringCard.PCSC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV.cs">
+      <Link>SamAV.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_authentication.cs">
+      <Link>SamAV_authentication.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_commands.cs">
+      <Link>SamAV_commands.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_consts.cs">
+      <Link>SamAV_consts.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_crypto.cs">
+      <Link>SamAV_crypto.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_entries.cs">
+      <Link>SamAV_entries.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_enums.cs">
+      <Link>SamAV_enums.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_files.cs">
+      <Link>SamAV_files.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_info.cs">
+      <Link>SamAV_info.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_interfaces.cs">
+      <Link>SamAV_interfaces.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_KUC.cs">
+      <Link>SamAV_KUC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_PKI.cs">
+      <Link>SamAV_PKI.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\SamAV\SamAV_utils.cs">
+      <Link>SamAV_utils.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpringCard.PCSC.CardHelpers\SpringCard.PCSC.CardHelpers.csproj">
+      <Project>{35e48f93-e7da-441e-9743-10c8ca5ade03}</Project>
+      <Name>SpringCard.PCSC.CardHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) I:\projects\binaries\common\lib-cs</PostBuildEvent>
+  </PropertyGroup>
+</Project>

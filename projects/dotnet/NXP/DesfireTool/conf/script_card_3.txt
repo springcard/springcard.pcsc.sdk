@@ -1,0 +1,24 @@
+SelectApplication --application-id=000000
+Authenticate --key-id=00 --key-value=00000000000000000000000000000000
+FormatPICC
+CreateApplication --application-id=414553 --key-settings=0F87
+SelectApplication --application-id=414553
+CreateStdDataFile --file-id=01 --comm-mode=01 --access-rights=1000 --size=28
+CreateValueFile --file-id=02 --comm-mode=01 --access-rights=2000 --lower-limit=0 --upper-limit=500 --initial-value=250 --value-flags=00
+CreateCyclicRecordFile --file-id=03 --comm-mode=01 --access-rights=3000 --size=25 --count=2 
+CreateStdDataFile --file-id=04 --comm-mode=03 --access-rights=4000 --size=38
+CreateValueFile --file-id=05 --comm-mode=03 --access-rights=5000 --lower-limit=0 --upper-limit=400000000 --initial-value=305419896 --value-flags=00
+CreateCyclicRecordFile --file-id=06 --comm-mode=03 --access-rights=6000 --size=36 --count=2 
+AuthenticateAES --key-id=00 --key-value=00000000000000000000000000000000
+WriteData --file-id=01 --comm-mode=01 --offset=0 --data=5374644461746146696C65204445534669726520544445532D4D4143
+WriteRecord --file-id=03 --comm-mode=01 --number=0 --data=4379636C6963205265636F726420446573666972652D4D4143
+CommitTransaction 
+WriteData --file-id=04 --comm-mode=03 --offset=0 --data=5374644461746146696C65204445534669726520544445532D46756C6C204369706865726564
+WriteRecord --file-id=06 --comm-mode=03 --number=0 --data=4379636C6963205265636F726420446573666972652D46756C6C79204369706865726564
+CommitTransaction 
+ChangeKeyAES --key-id=01 --old-key-value=00000000000000000000000000000000 --key-value=101112131415161718191A1B1C1D1E1F --key-version=00
+ChangeKeyAES --key-id=02 --old-key-value=00000000000000000000000000000000 --key-value=202122232425262728292A2B2C2D2E2F --key-version=00
+ChangeKeyAES --key-id=03 --old-key-value=00000000000000000000000000000000 --key-value=303132333435363738393A3B3C3D3E3F --key-version=00
+ChangeKeyAES --key-id=04 --old-key-value=00000000000000000000000000000000 --key-value=404142434445464748494A4B4C4D4E4F --key-version=00
+ChangeKeyAES --key-id=05 --old-key-value=00000000000000000000000000000000 --key-value=505152535455565758595A5B5C5D5E5F --key-version=00
+ChangeKeyAES --key-id=06 --old-key-value=00000000000000000000000000000000 --key-value=606162636465666768696A6B6C6D6E6F --key-version=00

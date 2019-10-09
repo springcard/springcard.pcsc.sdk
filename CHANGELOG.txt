@@ -1,0 +1,12 @@
+2016-03-29	v16.03
+Release on GitHub and www.Springcard.com
+
+2017-01-05	v17.01
+Adding NfcForum projects (NfcTagTool, NfcBeam and NfcTagEmul)
+Library SpringCard.PCSC ported on Linux and Mac OS X
+Most projects updated to Visual Studio 2017
+
+2019-10-09     v19.10
+.NET library and samples moved to framework v4.6.2
+Removed support for H512 and NFC'Roll
+Added support for SpringCore and PUCK

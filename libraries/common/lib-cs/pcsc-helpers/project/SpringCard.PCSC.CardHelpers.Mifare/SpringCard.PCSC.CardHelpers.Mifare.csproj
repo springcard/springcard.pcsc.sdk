@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F4CECDA-BA61-4EFD-85B5-E87570B20A66}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpringCard.PCSC.CardHelpers.Mifare</RootNamespace>
+    <AssemblyName>SpringCard.PCSC.CardHelpers.Mifare</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SpringCard.LibCs, Version=19.3.7118.16841, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>I:\projects\binaries\common\lib-cs\SpringCard.LibCs.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC, Version=19.6.7116.31258, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>I:\projects\binaries\common\lib-cs\SpringCard.PCSC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\CardHelpers\Mifare\SpringCardPCSC_Mifare.cs">
+      <Link>SpringCardPCSC_Mifare.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Mifare\SpringCardPCSC_MifareClassic.cs">
+      <Link>SpringCardPCSC_MifareClassic.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Mifare\SpringCardPCSC_MifareUltraLight.cs">
+      <Link>SpringCardPCSC_MifareUltraLight.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Mifare\SpringCardPCSC_MifareUltraLightC.cs">
+      <Link>SpringCardPCSC_MifareUltraLightC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CardHelpers\Mifare\SpringCardPCSC_MifareUltraLightEV1.cs">
+      <Link>SpringCardPCSC_MifareUltraLightEV1.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpringCard.PCSC.CardAnalysis\SpringCard.PCSC.CardAnalysis.csproj">
+      <Project>{764d8e41-0af4-400e-908d-936a94848b9c}</Project>
+      <Name>SpringCard.PCSC.CardAnalysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpringCard.PCSC.CardHelpers\SpringCard.PCSC.CardHelpers.csproj">
+      <Project>{35e48f93-e7da-441e-9743-10c8ca5ade03}</Project>
+      <Name>SpringCard.PCSC.CardHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) I:\projects\binaries\common\lib-cs</PostBuildEvent>
+  </PropertyGroup>
+</Project>

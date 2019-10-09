@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{044A8BAB-FC28-4EBC-9AA5-AB958EFA6C76}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SpringCard.PCSC.ZeroDriver</RootNamespace>
+    <AssemblyName>SpringCard.PCSC.ZeroDriver</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\..\..\..\..\binaries\dotnet\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="SpringCard.Bluetooth, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\binaries\dotnet\SpringCard.Bluetooth.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs, Version=19.8.7193.32067, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\binaries\dotnet\SpringCard.LibCs.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Windows, Version=19.2.7193.32070, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\binaries\dotnet\SpringCard.LibCs.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_Ccid.cs">
+      <Link>SpringCardPCSC_Ccid.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOver.cs">
+      <Link>SpringCardPCSC_CcidOver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOverBle.cs">
+      <Link>SpringCardPCSC_CcidOverBle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOverBle_SoMoD600.cs">
+      <Link>SpringCardPCSC_CcidOverBle_SoMoD600.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOverBle_SpringCore.cs">
+      <Link>SpringCardPCSC_CcidOverBle_SpringCore.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOverNetwork.cs">
+      <Link>SpringCardPCSC_CcidOverNetwork.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOverSerial.cs">
+      <Link>SpringCardPCSC_CcidOverSerial.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOver_Channel.cs">
+      <Link>SpringCardPCSC_CcidOver_Channel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOver_Reader.cs">
+      <Link>SpringCardPCSC_CcidOver_Reader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOver_ReaderList.cs">
+      <Link>SpringCardPCSC_CcidOver_ReaderList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ZeroDriver\SpringCardPCSC_CcidOver_Secure.cs">
+      <Link>SpringCardPCSC_CcidOver_Secure.cs</Link>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpringCard.PCSC\SpringCard.PCSC.csproj">
+      <Project>{eec59d80-1ae3-4771-981e-15518cbef5ca}</Project>
+      <Name>SpringCard.PCSC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) I:\projects\binaries\common\lib-cs</PostBuildEvent>
+  </PropertyGroup>
+</Project>
