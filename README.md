@@ -41,7 +41,7 @@ All the C# and Visual Basic samples run over the .NET Framework v4.6.2, either o
 ***Notes***
 
 - See [github.com/springcard/android-pcsclike/](https://github.com/springcard/android-pcsclike/) for a PC/SC-Like implementation on Android
-- See [github.com/springcard/ios-pcsclike/](https://github.com/springcard/ios-pcsclike/) for a PC/SC-Like implementation on Android
+- See [github.com/springcard/ios-pcsclike/](https://github.com/springcard/ios-pcsclike/) for a PC/SC-Like implementation on iOS
 
 ### Physical organisation of the SDK
 
