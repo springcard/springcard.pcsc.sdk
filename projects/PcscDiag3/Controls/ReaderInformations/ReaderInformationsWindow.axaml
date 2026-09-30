@@ -1,0 +1,37 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:local="using:PcscDiag3.Controls.ReaderInformations"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PcscDiag3.Controls.ReaderInformations.ReaderInformationsWindow"
+				x:DataType="local:ReaderInformationsViewModel"
+        Title="{Binding WindowTitle}"
+				WindowStartupLocation="CenterOwner"
+				SizeToContent="Width" Height="400">
+
+	<Grid RowDefinitions="*, Auto" ColumnDefinitions="*, Auto, Auto">
+		<TreeDataGrid	Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+									Source="{Binding ReaderInformationsSource}"
+									BorderBrush="DarkGray"
+									BorderThickness="0.5"
+									Padding="5" />
+
+		<TextBlock Grid.Row="1" Grid.Column="0"
+							 VerticalAlignment="Center"
+							 Margin="0 10 10 0"
+							 Text="{Binding Device}" />
+		
+		<Button Grid.Row="1" Grid.Column="1"
+						VerticalAlignment="Center"
+						Margin="10 10 0 0"
+						Content="Copy informations to clipboard"
+						Command="{Binding CopyToClipboardCommand}" />
+		
+		<Button Grid.Row="1" Grid.Column="2"
+						VerticalAlignment="Center"
+						Margin="10 10 0 0"
+						Content="Close"
+						Click="CloseButton_Click" />
+	</Grid>
+</Window>

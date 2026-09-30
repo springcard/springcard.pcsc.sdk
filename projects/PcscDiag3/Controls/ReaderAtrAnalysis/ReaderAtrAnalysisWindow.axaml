@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:local="using:PcscDiag3.Controls.ReaderAtrAnalysis"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PcscDiag3.Controls.ReaderAtrAnalysis.ReaderAtrAnalysisWindow"
+				x:DataType="local:ReaderAtrAnalysisViewModel"
+        Title="{Binding WindowTitle}"
+				WindowStartupLocation="CenterOwner"
+				ShowInTaskbar="False"				
+				CanResize="False"
+				SizeToContent="Height" Width="500">
+
+	<StackPanel Orientation="Vertical">
+		<TextBlock Margin="10 10 10 5" Text="ATR:" Theme="{StaticResource TitleH1}" />
+		<TextBox Margin="10 5 10 10" IsReadOnly="True" Text="{Binding ATR}" />
+
+		<TextBlock Margin="10 10 10 5" Text="Technical analysis:" Theme="{StaticResource TitleH1}" />
+		<TextBox Margin="10 5 10 10" 
+						 IsReadOnly="True"
+						 AcceptsReturn="True"
+						 Height="150"
+						 Text="{Binding TechnicalAnalysis}" />
+
+		<TextBlock Margin="10 10 10 5" Text="Possibly recognized card(s):" Theme="{StaticResource TitleH1}" />
+		<TextBox Margin="10 5 10 5"
+						 IsReadOnly="True"
+						 AcceptsReturn="True"
+						 Height="150"
+						 Text="{Binding RecognizedCards}" />
+		<TextBlock Margin="10 5 10 10" TextWrapping="Wrap" Text="Card recognition is based on based on smartcard_list.txt, a file publied by Ludovic Rousseau under the GPL license."  />
+
+		<TextBlock Margin="10 10 10 5" Text="Technical information from PC/SC v2:" Theme="{StaticResource TitleH1}" />
+		<TextBox Margin="10 5 10 10"
+						 IsReadOnly="True"
+						 AcceptsReturn="True"
+						 Height="100"
+						 Text="{Binding TecnicalInformations}" />
+
+		<Button Margin="10 10 10 0" HorizontalAlignment="Center" Content="Close" Click="CloseButton_Click" />
+	</StackPanel>
+</Window>

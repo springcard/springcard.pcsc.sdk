@@ -1,0 +1,113 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PcscDiag3.Controls.CardCommunication.Connect.ConnectWindow"
+        Title="Options for Connect"
+				CanResize="False"
+				SizeToContent="WidthAndHeight"
+				WindowStartupLocation="CenterOwner"
+				ShowInTaskbar="False"
+				Closing="Window_Closing">
+
+	<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+				ColumnDefinitions="Auto, *, AUto">
+		
+		<!-- Access Mode -->
+		<TextBlock Grid.Row="0" Grid.Column="0"
+							 Margin="0 10 0 0"
+							 Theme="{StaticResource TitleH1}"
+							 Text="Access Mode" />
+
+		<RadioButton Grid.Row="1" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="AccessMode"
+								 IsChecked="{Binding IsSharedAccessModeChecked}"
+								 Content="Shared"/>
+		<TextBlock Grid.Row="1" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="This application will share this card with other applications" />
+
+		<RadioButton Grid.Row="2" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="AccessMode"
+								 IsChecked="{Binding IsExclusiveAccessModeChecked}"
+								 Content="Exclusive"/>
+		<TextBlock Grid.Row="2" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="This application will not share this card with other applications" />
+
+		<RadioButton Grid.Row="3" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="AccessMode"
+								 IsChecked="{Binding IsDirectAccessModeChecked}"
+								 Content="Direct"/>
+		<TextBlock Grid.Row="3" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="This application will communicate with the reader directly." />
+
+		<!-- Protocol -->
+		<TextBlock Grid.Row="4" Grid.Column="0"
+							 Margin="0 15 0 0"
+							 Theme="{StaticResource TitleH1}"
+							 Text="Protocol" />
+
+		<RadioButton Grid.Row="5" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="Protocol"
+								 IsChecked="{Binding IsNoneProtocolChecked}"
+								 Content="None"/>
+		<TextBlock Grid.Row="5" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="No protocol (valid for direct access only)" />
+
+		<RadioButton Grid.Row="6" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="Protocol"
+								 IsChecked="{Binding IsT0ProtocolChecked}"
+								 Content="T=0"/>
+		<TextBlock Grid.Row="6" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Force the T=0 protocol" />
+
+		<RadioButton Grid.Row="7" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="Protocol"
+								 IsChecked="{Binding IsT1ProtocolChecked}"
+								 Content="T=1"/>
+		<TextBlock Grid.Row="7" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Force the T=1 protocol" />
+
+		<RadioButton Grid.Row="8" Grid.Column="0"
+								 FontWeight="Bold"
+								 Margin="0 0 10 0"
+								 GroupName="Protocol"
+								 IsChecked="{Binding IsT0T1ProtocolChecked}"
+								 Content="T=0 | T=1"/>
+		<TextBlock Grid.Row="8" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Use either T=0 or T=1" />
+
+		<RadioButton Grid.Row="9" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="Protocol"
+								 IsChecked="{Binding IsRawProtocolChecked}"
+								 Content="Raw"/>
+		<TextBlock Grid.Row="9" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Raw protocol (valid on some readers for contact memory cards)" />
+		
+		<!-- Action Buttons -->
+		<StackPanel Grid.Row="0" Grid.RowSpan="10" Grid.Column="2"
+								Orientation="Vertical">
+			<Button Content="OK" Margin="0 20 10 5" Width="70"
+							HorizontalContentAlignment="Center"
+							Command="{Binding OkCommand}" />
+			<Button Content="Cancel" Margin="0 5 10 10" Width="70"
+							HorizontalContentAlignment="Center"
+							Command="{Binding CancelCommand}" />
+		</StackPanel>
+	</Grid>
+</Window>

@@ -1,0 +1,11 @@
+{
+	"P2" : "URLOnly",
+	"Capabilities": "VASOnly",
+	"Merchants" : [
+		{
+			"Name" : "pass.com.springcard.springblue.discard",
+			"Url": "https://springpass.springcard.com"
+		}		
+	],
+	"Description" : "URLOnly, VASOnly, 1 merchant ID, no match, merchant has an URL"
+}

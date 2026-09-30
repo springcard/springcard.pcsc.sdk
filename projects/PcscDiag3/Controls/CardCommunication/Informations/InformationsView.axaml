@@ -1,0 +1,201 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:avaloniaHex="clr-namespace:AvaloniaHex;assembly=AvaloniaHex"
+			 xmlns:rendering="clr-namespace:AvaloniaHex.Rendering;assembly=AvaloniaHex"
+			 xmlns:local="using:PcscDiag3.Controls.CardCommunication.Informations"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+             x:Class="PcscDiag3.Controls.CardCommunication.Informations.InformationsView"
+			 Margin="0 10 0 0">
+
+	<Design.DataContext>
+		<local:InformationsViewModel />
+	</Design.DataContext>
+
+	<UserControl.Styles>
+		<Style Selector="TextBlock.Title">
+			<Setter Property="FontSize" Value="13" />
+			<Setter Property="Margin" Value="0 0 0 10" />
+		</Style>
+
+		<!-- Action Button's style -->
+		<Style Selector="Button">
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="Width" Value="45" />
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+
+			<Style Selector="^:disabled">
+				<Setter Property="Background" Value="Transparent" />
+				<Setter Property="Opacity" Value="0.7" />
+			</Style>
+
+			<Style Selector="^:pointerover">
+				<Setter Property="Background" Value="Transparent" />
+			</Style>
+		</Style>
+	</UserControl.Styles>
+
+	<Grid RowDefinitions="Auto, Auto, *, Auto, Auto, Auto, Auto, *, Auto, Auto, Auto, Auto"
+				ColumnDefinitions="Auto, *, Auto">
+
+		<!-- Table Command Title -->
+		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+							 Classes="Title"
+							 IsVisible="{Binding IsTransmitContentTextVisible}">
+			<Run Text="Enter the Command APDU:" />
+			<Run Text="CLA, INS, P1, P2, [Lc, DataIn], [Le]" FontWeight="Bold" />
+		</TextBlock>
+		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+							 Classes="Title"
+							 IsVisible="{Binding IsControlContentTextVisible}"
+							 Text="Enter the Escape Command:" />
+
+		<!-- Table Command Headers -->
+		<TextBlock Grid.Row="1" Grid.Column="0"
+							 Margin="5 0 0 2"
+							 Width="88"
+							 Foreground="Gray"
+							 Text="Offset" />
+		<TextBlock Grid.Row="1" Grid.Column="1"
+							 Margin="5 0"
+							 Foreground="Gray"
+							 Text="Hexadecimal entry" />
+		<TextBlock Grid.Row="1" Grid.Column="2"
+							 Margin="5 0"
+							 Width="202"
+							 Foreground="Gray"
+							 Text="ASCII translation" />
+
+		<!-- Table Command Content -->
+		<avaloniaHex:HexEditor Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+													 Padding="5 0"
+													 x:Name="CommandHexEditor"
+													 IsHeaderVisible="False"
+													 FontFamily="Cascadia Code,JetBrains Mono,Monospace,monospace"
+													 Background="White"
+													 BorderBrush="Gray"
+													 BorderThickness="1">
+			<avaloniaHex:HexEditor.Columns>
+				<rendering:OffsetColumn IsUppercase="true" />
+				<rendering:HexColumn IsUppercase="true" />
+				<rendering:AsciiColumn InvalidCellChar="?" />
+			</avaloniaHex:HexEditor.Columns>
+		</avaloniaHex:HexEditor>
+
+		<!-- Table Command Action Buttons	-->
+		<StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+							 Orientation="Horizontal"
+							 HorizontalAlignment="Right"
+							 Margin="0 5 0 5">
+			<Button Command="{Binding ClearCommand}" Opacity="">
+				<Image Source="avares://PcscDiag3/Assets/Communication/clear.png" Margin="3" Height="16"/>
+			</Button>
+			<Button Command="{Binding PreviousCommand}"
+							IsEnabled="{Binding IsPreviousButtonEnabled}">
+				<Image Source="avares://PcscDiag3/Assets/Communication/previous.png" Margin="3" Height="16"/>
+			</Button>
+			<ComboBox ItemsSource="{Binding History}"
+								SelectedIndex="{Binding SelectedHistoryIndex}"
+								VerticalAlignment="Center"
+								PlaceholderText="Select in history"
+							  Margin="5">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding }" Width="285" />
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+			<Button Command="{Binding NextCommand}"
+							IsEnabled="{Binding IsNextButtonEnabled}">
+				<Image Source="avares://PcscDiag3/Assets/Communication/next.png" Margin="3" Height="16"/>
+			</Button>
+			<Button Command="{Binding SendCommand}"
+							IsEnabled="{Binding IsSendButtonEnabled}"
+							Margin="10 0 0 0">
+				<Image Source="avares://PcscDiag3/Assets/Communication/bookmark.png" Margin="3" Height="16"/>
+			</Button>
+		</StackPanel>
+
+		<!-- Table Response Title -->
+		<TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+							 Classes="Title"
+							 IsVisible="{Binding IsTransmitContentTextVisible}">
+			<Run Text="Response APDU from the card:" />
+			<Run Text="[DataOut], SW1, SW2" FontWeight="Bold" />
+		</TextBlock>
+		<TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+							 Classes="Title"
+							 IsVisible="{Binding IsControlContentTextVisible}"
+							 Text="Escape Response from the reader:" />
+
+		<!-- Table Response Headers -->
+		<TextBlock Grid.Row="6" Grid.Column="0"
+							 Margin="5 0 0 2"
+							 Width="88"
+							 Foreground="Gray"
+							 Text="Offset" />
+		<TextBlock Grid.Row="6" Grid.Column="1"
+							 Margin="5 0"
+							 Foreground="Gray"
+							 Text="Hexadecimal entry" />
+		<TextBlock Grid.Row="6" Grid.Column="2"
+							 Margin="5 0"
+							 Width="202"
+							 Foreground="Gray"
+							 Text="ASCII translation" />
+
+		<!-- Table Response Content -->
+		<avaloniaHex:HexEditor Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"
+													 Padding="5 0"
+													 x:Name="ResponseHexEditor"
+													 IsHeaderVisible="False"
+													 FontFamily="Cascadia Code,JetBrains Mono,Monospace,monospace"
+													 Background="White"
+													 BorderBrush="Gray"
+													 BorderThickness="1">
+			<avaloniaHex:HexEditor.Columns>
+				<rendering:OffsetColumn IsUppercase="true" />
+				<rendering:HexColumn IsUppercase="true" />
+				<rendering:AsciiColumn InvalidCellChar="?" />
+			</avaloniaHex:HexEditor.Columns>
+		</avaloniaHex:HexEditor>
+
+		<!-- Status -->
+		<TextBlock Grid.Row="8" Grid.Column="0"
+							 Margin="0 10 0 3"
+							 Text="Status Word"
+							 IsVisible="{Binding IsTransmitContentTextVisible}" />
+		<TextBlock Grid.Row="8" Grid.Column="0"
+							 Margin="0 10 0 3"
+							 Text="Result byte"
+							 IsVisible="{Binding IsControlContentTextVisible}" />
+		<TextBox Grid.Row="9" Grid.Column="0"
+						 IsReadOnly="true"
+						 Text="{Binding Response}" />
+
+		<TextBlock Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
+							 Margin="10 10 0 3"
+							 Text="Meaning" />
+		<TextBox Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
+						 Margin="10 0 0 0"
+						 IsReadOnly="true"
+						 Text="{Binding ResponseMeaning}" />
+
+		<!-- Error -->
+		<TextBlock Grid.Row="10" Grid.Column="0"
+							 Margin="0 10 0 3"
+							 Text="Error code" />
+		<TextBox Grid.Row="11" Grid.Column="0"
+						 IsReadOnly="true"
+						 Text="{Binding ErrorCode}" />
+
+		<TextBlock Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"
+							 Margin="10 10 0 3"
+							 Text="Explanation" />
+		<TextBox Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2"
+						 Margin="10 0 0 0"
+						 IsReadOnly="true"
+						 Text="{Binding ErrorExplanation}" />
+	</Grid>
+</UserControl>

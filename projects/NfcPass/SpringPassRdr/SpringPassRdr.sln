@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringPassRdr", "SpringPassRdr\SpringPassRdr.csproj", "{DA61518C-B202-4002-BA31-E3723BE84E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringpassRdrLinux", "SpringPassRdrLinux\SpringpassRdrLinux.csproj", "{E464AF0D-8CED-46EE-BFC9-6CFC25EFD73F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA61518C-B202-4002-BA31-E3723BE84E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA61518C-B202-4002-BA31-E3723BE84E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA61518C-B202-4002-BA31-E3723BE84E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA61518C-B202-4002-BA31-E3723BE84E08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E464AF0D-8CED-46EE-BFC9-6CFC25EFD73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E464AF0D-8CED-46EE-BFC9-6CFC25EFD73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E464AF0D-8CED-46EE-BFC9-6CFC25EFD73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E464AF0D-8CED-46EE-BFC9-6CFC25EFD73F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3338FA26-4AB4-476B-9173-B212BB3E7C41}
+	EndGlobalSection
+EndGlobal

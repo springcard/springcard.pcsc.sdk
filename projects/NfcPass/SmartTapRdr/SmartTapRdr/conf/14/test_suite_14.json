@@ -1,0 +1,2632 @@
+[
+  {
+    "name": "14.1: Push data 2.1 - 6XXX - Random 6XXX error - Stop Smart Tap session - Proceed to Payment Session",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\",  (en) \"10 points have been added to your account\".",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "6000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "6000",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 418
+  },
+  {
+    "name": "14.2: Push data 2.1 - 6XXX - Random 6XXX error - Stop Smart Tap session - Stop tap",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\", (en) \"10 points have been added to your account\". Stop tap. Allow retry w/o cashier intervention. Allow cashier to skip. ",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "6000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "6000",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 419
+  },
+  {
+    "name": "14.3: Push data 2.1 - 92XX - Random 92XX error - Retry transient error",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\",  (en) \"10 points have been added to your account\", retry push.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9269",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "05",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9269",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 420
+  },
+  {
+    "name": "14.4: Push data 2.1 - 93XX - Random 93XX error - Stop Smart Tap session, Stop tap - User Action Required",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\",  (en) \"10 points have been added to your account\". Stop session. Stop Tap.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9369",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9369",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 421
+  },
+  {
+    "name": "14.5: Push data 2.1 - 94XX - Random 94XX error - Retry if terminal can fix",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\",  (en) \"10 points have been added to your account\", retry push.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9472",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "05",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9472",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 422
+  },
+  {
+    "name": "14.6: Push data 2.1 - 95XX - Random 95XX error - Stop Smart Tap session - Proceed to Payment Session",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\",  (en) \"10 points have been added to your account\".",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9532",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9532",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 423
+  },
+  {
+    "name": "14.7: Push data 2.1 - 95XX - Random 95XX error - Stop Smart Tap session - Stop tap",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\", (en) \"10 points have been added to your account\". Stop tap. Allow retry w/o cashier intervention. Allow cashier to skip",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9532",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9532",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 424
+  },
+  {
+    "name": "14.8: Push data 2.1 - 9XXX - Random 9XXX error - Stop Smart Tap session - Proceed to Payment Session",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\",  (en) \"10 points have been added to your account\".",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9817",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9817",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 425
+  },
+  {
+    "name": "14.9: Push data 2.1 - 9XXX - Random 9XXX error - Stop Smart Tap session - Stop tap",
+    "expectedTerminalBehavior": "Terminal pushes success service status \"98766789\", (en) \"Reward Program Applied\", (en) \"10 points have been added to your account\". Stop tap. Allow retry w/o cashier intervention. Allow cashier to skip",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Push Data",
+              "prefix": "starts_with(90520000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Push Service NDEF Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(spr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    },
+                    {
+                      "name": "Service Status",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ssr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Object ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(oid)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "0498766789",
+                          "records": []
+                        },
+                        {
+                          "name": "Service Usage",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sug)",
+                          "prefix": "01",
+                          "prefixLength": 1,
+                          "suffixLength": 0,
+                          "records": [
+                            {
+                              "name": "Title",
+                              "optional": false,
+                              "id": "ascii(sut)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E5265776172642050726F6772616D204170706C696564",
+                              "records": []
+                            },
+                            {
+                              "name": "Description",
+                              "optional": false,
+                              "id": "ascii(sud)",
+                              "tnf": "tnf(well_known)",
+                              "type": "ascii(T)",
+                              "prefixLength": 0,
+                              "suffixLength": 0,
+                              "payload": "02656E313020706F696E74732068617665206265656E20616464656420746F20796F7572206163636F756E74",
+                              "records": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Push Data Response",
+              "prefixLength": 0,
+              "suffix": "9817",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9817",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 1,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 25,
+    "id": 426
+  }
+]

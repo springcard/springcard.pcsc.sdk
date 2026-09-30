@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
+  </PropertyGroup>
+
+  <!-- Public Nuget -->
+  <ItemGroup>
+		<PackageVersion Include="Avalonia.Controls.TreeDataGrid" Version="11.1.1" />
+		<PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+		<PackageVersion Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+		<PackageVersion Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+		<PackageVersion Include="AvaloniaHex" Version="0.1.9" />
+		<PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="9.0.7" />
+		<PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
+  </ItemGroup>
+
+  <!-- SpringCard Nuget -->
+  <ItemGroup>
+		<PackageVersion Include="SpringCard.LibCs.Windows" Version="24.44.*" />
+		<PackageVersion Include="SpringCard.LibCs.Windows.UI" Version="24.44.*" />
+		<PackageVersion Include="SpringCard.PCSC.CardAnalysis" Version="25.21.*" />
+		<PackageVersion Include="SpringCard.PCSC.ReaderHelpers" Version="25.21.*" />
+  </ItemGroup>
+
+</Project>

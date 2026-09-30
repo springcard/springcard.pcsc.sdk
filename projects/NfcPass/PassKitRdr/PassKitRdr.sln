@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassKitRdr", "PassKitRdr\PassKitRdr.csproj", "{E0284033-8D05-4BA9-B653-E80C68DD41D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassKitReadCli", "PassKitReadCli\PassKitReadCli.csproj", "{536D8F13-2BAD-43D2-B7D0-EE55E9A21531}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassKitDecryptCli", "PassKitDecryptCli\PassKitDecryptCli.csproj", "{C347B6B6-AD4B-42DA-8371-EC170E6EC03D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassKitTestTerminal", "PassKitTestTerminal\PassKitTestTerminal.csproj", "{86F62E8C-EAB4-44BC-8056-A37490F98190}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0284033-8D05-4BA9-B653-E80C68DD41D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0284033-8D05-4BA9-B653-E80C68DD41D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0284033-8D05-4BA9-B653-E80C68DD41D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0284033-8D05-4BA9-B653-E80C68DD41D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536D8F13-2BAD-43D2-B7D0-EE55E9A21531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{536D8F13-2BAD-43D2-B7D0-EE55E9A21531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{536D8F13-2BAD-43D2-B7D0-EE55E9A21531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{536D8F13-2BAD-43D2-B7D0-EE55E9A21531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C347B6B6-AD4B-42DA-8371-EC170E6EC03D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C347B6B6-AD4B-42DA-8371-EC170E6EC03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C347B6B6-AD4B-42DA-8371-EC170E6EC03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C347B6B6-AD4B-42DA-8371-EC170E6EC03D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F62E8C-EAB4-44BC-8056-A37490F98190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F62E8C-EAB4-44BC-8056-A37490F98190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F62E8C-EAB4-44BC-8056-A37490F98190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F62E8C-EAB4-44BC-8056-A37490F98190}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5CCE39F-DA8D-47D2-9909-9E34DD02699E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+{
+	"P2" : "FullVAS",
+	"Capabilities": "VASOnly",
+	"Merchants" : [
+		{
+			"Name" : "pass.com.springcard.springblue.generic",
+			"PrivateKey" : "MHcCAQEEICp+PT7K8FQSOi2HED1Ar5RqxxN2EkiKJMCSfaL4htYNoAoGCCqGSM49AwEHoUQDQgAE9RCZaHxXUIjQFQnwKmq6+cVqFBNO6ZKQmekosMQRZmutPs8szUsiLokILdaiT/7F5qUl8qSfEvlocYy6z98jIw=="
+		}
+	],
+	"Description" : "FullVAS, VASOnly, 1 merchant ID, match, merchant doesn't have an URL"	
+}

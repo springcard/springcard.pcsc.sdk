@@ -1,0 +1,52 @@
+<Project>
+
+	<PropertyGroup Condition="$(TargetFramework) == 'net6.0'">
+		<FrameworkPath>net60</FrameworkPath>
+		<FrameworkLabel>.NET 6.0</FrameworkLabel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework) == 'net10.0'">
+		<FrameworkPath>net100</FrameworkPath>
+		<FrameworkLabel>.NET 10.0</FrameworkLabel>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DefaultTargetFrameworks>net6.0</DefaultTargetFrameworks>
+		<DefaultTargetFrameworks Condition="'$(VisualStudioVersion)' &gt;= '18.0'">net10.0</DefaultTargetFrameworks>
+
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+
+		<Title>$(AssemblyName)</Title>
+		<PackageId>$(AssemblyName)</PackageId>
+		<Authors>SpringCard</Authors>
+		<Version>25.22.0</Version>
+		<PackageVersion Condition="'$(Configuration)' == 'Debug'">$(Version).$([MSBuild]::Subtract($([System.Math]::Floor($([MSBuild]::Divide($([System.DateTimeOffset]::UtcNow.ToUnixTimeSeconds()), 86400)))), 10957))$([System.DateTimeOffset]::Now.ToString("HHmm"))</PackageVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(LocalNuGetOutput)' != ''">
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageOutputPath>$(LocalNuGetOutput)</PackageOutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AssemblyTitle>$(AssemblyName)</AssemblyTitle>
+		<Company>SpringCard</Company>
+		<Copyright>Copyright © SpringCard SAS, France, 2019-$([System.DateTime]::Now.Year)</Copyright>
+		<AssemblyTrademark>This program is an unsupported software library from SpringCard's SDK. You may use it freely, but only together with a genuine SpringCard device. Please read the associated LICENSE.txt file for further information.</AssemblyTrademark>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<ComVisible>false</ComVisible>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AvaloniaVersion>11.3.13</AvaloniaVersion>
+	</PropertyGroup>
+
+</Project>

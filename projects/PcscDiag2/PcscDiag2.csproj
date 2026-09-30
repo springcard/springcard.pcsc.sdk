@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E0086466-5757-46DC-BF8E-3F27321F0AA1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PcscDiag2</RootNamespace>
+    <AssemblyName>PcscDiag2</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\_output\PcscDiag2\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\_output\PcscDiag2\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>smartcard.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MemoryCardTool\HexBox\Be.Windows.Forms.HexBox.csproj">
+      <Project>{26C5F25F-B450-4CAF-AD8B-B8D11AE73457}</Project>
+      <Name>Be.Windows.Forms.HexBox</Name>
+    </ProjectReference>
+    <Reference Include="SpringCard.LibCs">
+      <HintPath>..\packages\SpringCard.LibCs.25.21.30\lib\net48\SpringCard.LibCs.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.GetText">
+      <HintPath>..\packages\SpringCard.LibCs.GetText.25.21.30\lib\netstandard2.0\SpringCard.LibCs.GetText.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Translations">
+      <HintPath>..\packages\SpringCard.LibCs.Translations.25.21.30\lib\netstandard2.0\SpringCard.LibCs.Translations.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Windows">
+      <HintPath>..\packages\SpringCard.LibCs.Windows.25.21.21\lib\net48\SpringCard.LibCs.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Windows.Forms">
+      <HintPath>..\packages\SpringCard.LibCs.Windows.Forms.25.21.21\lib\net48\SpringCard.LibCs.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC">
+      <HintPath>..\packages\SpringCard.PCSC.25.22.10\lib\net48\SpringCard.PCSC.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC.CardAnalysis">
+      <HintPath>..\packages\SpringCard.PCSC.CardAnalysis.25.21.26\lib\netstandard2.0\SpringCard.PCSC.CardAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC.Forms">
+      <HintPath>..\packages\SpringCard.PCSC.Forms.25.22.10\lib\net48\SpringCard.PCSC.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC.ReaderHelpers">
+      <HintPath>..\packages\SpringCard.PCSC.ReaderHelpers.25.21.26\lib\net48\SpringCard.PCSC.ReaderHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Vanara.Core">
+      <HintPath>..\packages\Vanara.Core.4.1.2\lib\net48\Vanara.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Vanara.PInvoke.SetupAPI">
+      <HintPath>..\packages\Vanara.PInvoke.SetupAPI.4.1.2\lib\net48\Vanara.PInvoke.SetupAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Vanara.PInvoke.Shared">
+      <HintPath>..\packages\Vanara.PInvoke.Shared.4.1.2\lib\net48\Vanara.PInvoke.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.Extensions">
+      <HintPath>..\packages\System.Resources.Extensions.4.6.0\lib\netstandard2.0\System.Resources.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\BenchmarkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BenchmarkForm.Designer.cs">
+      <DependentUpon>BenchmarkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BookmarkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BookmarkForm.Designer.cs">
+      <DependentUpon>BookmarkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configs.cs" />
+    <Compile Include="Forms\ConnectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConnectForm.Designer.cs">
+      <DependentUpon>ConnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CardForm.Designer.cs">
+      <DependentUpon>CardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CardInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CardInfoForm.Designer.cs">
+      <DependentUpon>CardInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ContextAndListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContextAndListForm.Designer.cs">
+      <DependentUpon>ContextAndListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DisconnectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DisconnectForm.Designer.cs">
+      <DependentUpon>DisconnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EndTransactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EndTransactionForm.Designer.cs">
+      <DependentUpon>EndTransactionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReaderInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReaderInfoForm.Designer.cs">
+      <DependentUpon>ReaderInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReconnectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReconnectForm.Designer.cs">
+      <DependentUpon>ReconnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\BenchmarkForm.resx">
+      <DependentUpon>BenchmarkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConnectForm.resx">
+      <DependentUpon>ConnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CardForm.resx">
+      <DependentUpon>CardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CardInfoForm.resx">
+      <DependentUpon>CardInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContextAndListForm.resx">
+      <DependentUpon>ContextAndListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DisconnectForm.resx">
+      <DependentUpon>DisconnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EndTransactionForm.resx">
+      <DependentUpon>EndTransactionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReaderInfoForm.resx">
+      <DependentUpon>ReaderInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReconnectForm.resx">
+      <DependentUpon>ReconnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\benchmark.png" />
+    <Content Include="smartcard.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

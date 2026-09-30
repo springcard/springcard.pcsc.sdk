@@ -1,0 +1,102 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="using:PcscDiag3.Controls.Main"
+        mc:Ignorable="d" d:DesignWidth="750" d:DesignHeight="650"
+		CanResize="True"
+		MinWidth="650" MinHeight="500"
+		SizeToContent="WidthAndHeight"
+        x:Class="PcscDiag3.Controls.Main.MainWindow"
+		x:DataType="local:MainWindowViewModel"
+        Title="SpringCard PC/SC Diagnostic"
+        Icon="/Assets/smartcard.ico"
+		Closing="Window_Closing"
+		Closed="Window_Closed"
+		Opened="Window_Opened">
+
+	<!--<NativeMenu.Menu>
+		<NativeMenu>
+			<NativeMenuItem Header="_File">
+				<NativeMenu>
+					<NativeMenuItem Header="PC/SC options" Command="{Binding PcscOptionsCommand}" />
+					<NativeMenuItemSeparator />
+					<NativeMenuItem Header="Exit" Command="{Binding ExitCommand}" />
+				</NativeMenu>
+			</NativeMenuItem>
+			<NativeMenuItem Header="About" Command="{Binding AboutCommand}" />
+		</NativeMenu>
+	</NativeMenu.Menu>-->
+
+	<Grid RowDefinitions="Auto, Auto, Auto, *, Auto" ColumnDefinitions="*, *">
+		<Menu Grid.Row="0" Grid.ColumnSpan="2">
+			<MenuItem Header="_File">
+				<MenuItem Header="PC/SC options" Command="{Binding PcscOptionsCommand}" />
+				<Separator />
+				<MenuItem Header="Exit" Command="{Binding ExitCommand}" />
+			</MenuItem>
+			<MenuItem Header="About" Command="{Binding AboutCommand}" />
+		</Menu>
+
+		<Rectangle Grid.Row="1" Grid.ColumnSpan="2" Margin="-15 0 -15 0" Fill="{DynamicResource SpringCardColor}" />
+		<Image Grid.Row="1" Grid.Column="1"
+					 Height="35"
+					 Margin="10"
+					 HorizontalAlignment="Right"
+					 Source="avares://SpringCard.LibCs.Windows.UI/Assets/logo-full-white.png"
+					 PointerPressed="SpringCardLogo_PointerPressed" />
+
+		<TextBlock Grid.Row="2" Grid.Column="0" Margin="5 10 5 5" Text="{Binding ReadersInformations}" />
+		<TextBlock Grid.Row="2" Grid.Column="1" Margin="5 10 5 5" HorizontalAlignment="Right" Text="{Binding GeneralInformations}" />
+
+		<TreeDataGrid Grid.Row="3" Grid.ColumnSpan="2" Source="{Binding ReadersSource}" PointerPressed="ReadersGrid_PointerPressed">
+			<TreeDataGrid.Resources>
+				<DataTemplate x:Key="ReaderIconCell" DataType="local:ReaderModel">
+					<Image Source="{Binding ReaderIcon}" Height="12" />
+				</DataTemplate>
+				<DataTemplate x:Key="ReaderStatusCell" DataType="local:ReaderModel">
+					<Image Source="{Binding StatusIcon}" Height="12" />
+				</DataTemplate>
+			</TreeDataGrid.Resources>
+
+			<TreeDataGrid.Styles>
+				<Style Selector="TreeDataGridRow">
+					<Setter Property="ContextMenu">
+						<ContextMenu Opening="TreeRowContextMenu_Opening">
+							<MenuItem Header="Transmit (shared)"
+												Command="{Binding TransmitSharedCommand}"
+												IsEnabled="{Binding IsSelectedReaderCardAtrPresent}"
+												ToolTip.Tip="Connect to the card (using T=0 or T=1 protocol, shared mode) and open the dialog to Transmit APDUs to the card" />
+							<MenuItem Header="Transmit (exclusive)"
+												Command="{Binding TransmitExclusiveCommand}"
+												IsEnabled="{Binding IsSelectedReaderCardAtrPresent}"
+												ToolTip.Tip="Connect to the card (using T=0 or T=1 protocol, exclusive mode) and open the dialog to Transmit APDUs to the card" />
+							<MenuItem Header="Control (direct)"
+												Command="{Binding ControlDirectCommand}"
+												ToolTip.Tip="Connect directly to the reader (DIRECT protocol) and open the dialog to send Control commands to the reader" />
+							<Separator />
+							<MenuItem Header="ATR analysis, card info"
+												Command="{Binding AtrAnalysisCommand}"
+												IsEnabled="{Binding IsSelectedReaderCardAtrPresent}"
+												ToolTip.Tip="Parse the ATR and try to recognize the card" />
+							<MenuItem Header="Copy ATR to clipboard"
+												Command="{Binding CopyAtrToClipboardCommand}"
+												IsEnabled="{Binding IsSelectedReaderCardAtrPresent}"
+												ToolTip.Tip="Copy the ATR to the clipboard, so that you may paste it in another application" />
+							<Separator />
+							<MenuItem Header="Add this ATR to the no-driver list (Admin only)"
+												Command="{Binding AddAtrToNoDriversCommand}"
+												ToolTip.Tip="Copy the ATR to the local registry and add a minidriver for this card" />
+							<Separator />
+							<MenuItem Header="Reader info"
+												Command="{Binding ReaderInfoCommand}"
+												ToolTip.Tip="Retrieve reader informations" />
+						</ContextMenu>
+					</Setter>
+				</Style>
+			</TreeDataGrid.Styles>
+		</TreeDataGrid>
+
+		<Rectangle Grid.Row="4" Grid.ColumnSpan="2" Height="10" Fill="Transparent" />
+	</Grid>
+</Window>

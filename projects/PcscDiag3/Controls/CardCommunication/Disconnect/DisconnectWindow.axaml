@@ -1,0 +1,70 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PcscDiag3.Controls.CardCommunication.Disconnect.DisconnectWindow"
+        Title="Options for Disconnect"
+				CanResize="False"
+				SizeToContent="WidthAndHeight"
+				WindowStartupLocation="CenterOwner"
+				ShowInTaskbar="False"
+				Closing="Window_Closing">
+
+	<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+				ColumnDefinitions="Auto, *, AUto">
+
+		<!-- Initialization-->
+		<TextBlock Grid.Row="0" Grid.Column="0"
+							 Margin="0 10 0 0"
+							 Theme="{StaticResource TitleH1}"
+							 Text="Card initialization" />
+
+		<RadioButton Grid.Row="1" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="Initialization"
+								 IsChecked="{Binding IsLeaveInitializationChecked}"
+								 Content="Leave"/>
+		<TextBlock Grid.Row="1" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Do not do anything special on Disconnect" />
+
+		<RadioButton Grid.Row="2" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="Initialization"
+								 IsChecked="{Binding IsResetInitializationChecked}"
+								 Content="Reset"/>
+		<TextBlock Grid.Row="2" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Reset the card (Warm reset)" />
+
+		<RadioButton Grid.Row="3" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="Initialization"
+								 IsChecked="{Binding IsUnpowerInitializationChecked}"
+								 Content="Unpower"/>
+		<TextBlock Grid.Row="3" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Power down the card and reset it (Cold reset)" />
+
+		<RadioButton Grid.Row="4" Grid.Column="0"
+								 FontWeight="Bold"
+								 GroupName="Initialization"
+								 IsChecked="{Binding IsEjectInitializationChecked}"
+								 Content="Eject"/>
+		<TextBlock Grid.Row="4" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Eject the card (if the reader is able to do so!)" />
+		
+		<!-- Action Buttons -->
+		<StackPanel Grid.Row="0" Grid.RowSpan="10" Grid.Column="2"
+								Orientation="Vertical">
+			<Button Content="OK" Margin="0 20 10 5" Width="70"
+							HorizontalContentAlignment="Center"
+							Command="{Binding OkCommand}" />
+			<Button Content="Cancel" Margin="0 5 10 10" Width="70"
+							HorizontalContentAlignment="Center"
+							Command="{Binding CancelCommand}" />
+		</StackPanel>
+	</Grid>
+</Window>

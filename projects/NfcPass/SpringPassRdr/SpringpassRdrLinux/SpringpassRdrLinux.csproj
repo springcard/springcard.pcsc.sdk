@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E464AF0D-8CED-46EE-BFC9-6CFC25EFD73F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SpringpassRdrLinux</RootNamespace>
+    <AssemblyName>SpringpassRdrLinux</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PassKitRdr\SpringCard.AppleVAS\SpringCard.AppleVAS.csproj">
+      <Project>{85D99C83-99CE-4A86-8C4F-0901803D2EFB}</Project>
+      <Name>SpringCard.AppleVAS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SmartTapRdr\SpringCard.GoogleVAS\SpringCard.GoogleVAS.csproj">
+      <Project>{349A7992-A65A-460F-B229-D6B87A14A5D9}</Project>
+      <Name>SpringCard.GoogleVAS</Name>
+    </ProjectReference>
+    <Reference Include="BouncyCastle.NetCore">
+      <HintPath>..\..\..\packages\BouncyCastle.NetCore.2.2.1\lib\net45\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs">
+      <HintPath>..\..\..\packages\SpringCard.LibCs.25.21.30\lib\net48\SpringCard.LibCs.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Windows">
+      <HintPath>..\..\..\packages\SpringCard.LibCs.Windows.25.21.21\lib\net48\SpringCard.LibCs.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Windows.Forms">
+      <HintPath>..\..\..\packages\SpringCard.LibCs.Windows.Forms.25.21.21\lib\net48\SpringCard.LibCs.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.Licenses">
+      <HintPath>..\..\..\..\binaries\SpringCard.Licenses.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.Licenses.Forms">
+      <HintPath>..\..\..\..\binaries\SpringCard.Licenses.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringCard.PCSC">
+      <HintPath>..\..\..\packages\SpringCard.PCSC.25.22.10\lib\net48\SpringCard.PCSC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,3217 @@
+[
+  {
+    "name": "15.1: Get Data OR Payment - Base Case",
+    "expectedTerminalBehavior": "Return Customer \"1234567890\" and Loyalty \"324234234\", do not request payment data.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": false,
+    "requireLiveAuthentication": false,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 26,
+    "id": 427
+  },
+  {
+    "name": "15.2: Get Data \u0026 Payment - Base Case - Second Select",
+    "expectedTerminalBehavior": "Do second select. Return customer \"1234567890\" and Return Loyalty \"324234234\", do not request payment data.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": false,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": false,
+    "requireLiveAuthentication": false,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Select Smart Tap 2.X",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A4040009A000000476D000011100)",
+              "records": []
+            },
+            {
+              "name": "Select Smart Tap 2.x Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 26,
+    "id": 428
+  },
+  {
+    "name": "15.3: Get Data \u0026 Payment - No Valuables data",
+    "expectedTerminalBehavior": "Return customer \"1234567890\".",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": false,
+    "requireLiveAuthentication": false,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9001",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 26,
+    "id": 429
+  },
+  {
+    "name": "15.4: Get Data OR Payment, payment not ready",
+    "expectedTerminalBehavior": "Return customer \"123456890\" and loyalty \"324234234\", do not request payment data.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": false,
+    "requireLiveAuthentication": false,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9101",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 1
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 26,
+    "id": 430
+  },
+  {
+    "name": "15.5: Get Data OR Payment, payment not ready",
+    "expectedTerminalBehavior": "Return customer \"123456890\", do not request payment data.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": false,
+    "requireLiveAuthentication": false,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9102",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9102"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 1
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 26,
+    "id": 431
+  },
+  {
+    "name": "15.6: Get Data + Get Additional Data OR Payment",
+    "expectedTerminalBehavior": "Return Customer \"1234567890\" and 10 offers [\"324234234\", \"324234235\", \"324234236\", \"324234237\", \"324234238\", \"324234239\", \"324234240\", \"324234241\", \"324234242\", \"324234243\"], do not request payment data.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": false,
+    "requireLiveAuthentication": false,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9100",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Additional Data",
+              "prefix": "starts_with(90C000)",
+              "prefixLength": 4,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": []
+            },
+            {
+              "name": "Get Additional Data Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234235",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234236",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234237",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234238",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234239",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234240",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234241",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234242",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234243",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 26,
+    "id": 432
+  },
+  {
+    "name": "15.7: Get Data + Get Additional Data twice OR Payment",
+    "expectedTerminalBehavior": "Return Customer \"1234567890\" and 40 offers [\"324234234\", ... , \"324234273\"], do not request payment data.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": false,
+    "requireLiveAuthentication": false,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9100",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Additional Data (1)",
+              "prefix": "starts_with(90C000)",
+              "prefixLength": 4,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": []
+            },
+            {
+              "name": "Get Additional Data (1) Response",
+              "prefixLength": 0,
+              "suffix": "9100",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Additional Data (2)",
+              "prefix": "starts_with(90C000)",
+              "prefixLength": 4,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": []
+            },
+            {
+              "name": "Get Additional Data (2) Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234235",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234236",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234237",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234238",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234239",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234240",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234241",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234242",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234243",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234244",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234245",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234246",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234247",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234248",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234249",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234250",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234251",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234252",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234253",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234254",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234255",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234256",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234257",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234258",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234259",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234260",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234261",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234262",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234263",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234264",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234265",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234266",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234267",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234268",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234269",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234270",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234271",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234272",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234273",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 26,
+    "id": 433
+  },
+  {
+    "name": "15.8: Get Data + Get Additional Data, payment not ready",
+    "expectedTerminalBehavior": "Return Customer \"1234567890\" and 10 offers [\"324234234\", \"324234235\", \"324234236\", \"324234237\", \"324234238\", \"324234239\", \"324234240\", \"324234241\", \"324234242\", \"324234243\"], do not request payment data.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": false,
+    "requireLiveAuthentication": false,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9100",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Additional Data",
+              "prefix": "starts_with(90C000)",
+              "prefixLength": 4,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": []
+            },
+            {
+              "name": "Get Additional Data Response",
+              "prefixLength": 0,
+              "suffix": "9101",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 1,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234235",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234236",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234237",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234238",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234239",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234240",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234241",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234242",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      },
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 2,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234243",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 26,
+    "id": 434
+  }
+]

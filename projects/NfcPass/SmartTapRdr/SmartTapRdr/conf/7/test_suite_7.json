@@ -1,0 +1,108 @@
+[
+  {
+    "name": "7.1: DEPRECATED",
+    "expectedTerminalBehavior": "This test is deprecated.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9101",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 0,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [],
+    "testSuiteId": 18,
+    "id": 353
+  }
+]

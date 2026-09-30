@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
+		<RuntimeIdentifiers>win-x64;linux-x64;osx-x64;osx-arm64</RuntimeIdentifiers>
+
+		<OutputPath>..\..\_output\$(AssemblyName)</OutputPath>
+		<IntermediateOutputPath>..\..\_obj\$(AssemblyName)</IntermediateOutputPath>
+
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+
+		<Title>PcscDiag3</Title>
+		<Description>SpringCard PSCS Diag 3</Description>
+
+		<AvaloniaVersion>11.3.2</AvaloniaVersion>
+
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia.Controls.TreeDataGrid" />
+		<PackageReference Include="Avalonia.Desktop" />
+		<PackageReference Include="Avalonia.Fonts.Inter" />
+		<PackageReference Include="Avalonia.ReactiveUI" />
+		<PackageReference Include="AvaloniaHex" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SpringCard.LibCs.Windows" />
+		<PackageReference Include="SpringCard.LibCs.Windows.UI" />
+		<PackageReference Include="SpringCard.PCSC.CardAnalysis" />
+		<PackageReference Include="SpringCard.PCSC.ReaderHelpers" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Compile Update="Controls\CardCommunication\Disconnect\DisconnectWindow.axaml.cs">
+	    <DependentUpon>DisconnectWindow.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\CardCommunication\Reconnect\ReconnectWindow.axaml.cs">
+	    <DependentUpon>ReconnectWindow.axaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Assets\smartcard.ico">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	  <None Update="osx\dotnet.entitlements">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="osx\icon.icns">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="osx\Info.plist">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="osx\make">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="unix\control">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="unix\make">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="unix\pcscdiag3.desktop">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="unix\pcscdiag3.sh">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

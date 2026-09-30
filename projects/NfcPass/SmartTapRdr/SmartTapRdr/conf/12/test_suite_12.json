@@ -1,0 +1,2089 @@
+[
+  {
+    "name": "12.1: Negotiate Crypto 2.1 - 6XXX - Random 6XXX error - Stop Smart Tap session - Proceed to Payment Session",
+    "expectedTerminalBehavior": "Stop Smart Tap session after 6XXX error, get payment.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "6000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "6000",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 405
+  },
+  {
+    "name": "12.2: Negotiate Crypto 2.1 - 6XXX - Random 6XXX error - Stop Smart Tap session - Stop tap",
+    "expectedTerminalBehavior": "Stop Smart Tap session after 6XXX error. Stop tap. Allow retrying without cashier intervention. Allow cashier to skip.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "6000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "6000",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 406
+  },
+  {
+    "name": "12.3: Negotiate Crypto 2.1 - 92XX - Random 92XX error - Retry transient error",
+    "expectedTerminalBehavior": "Retry Negotiate Crypto after 92XX error. Return loyalty \"324234234\".",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9269",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command Retry",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Retry Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "05",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9269",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 407
+  },
+  {
+    "name": "12.4: Negotiate Crypto 2.1 - 93XX - Random 93XX error - Stop Smart Tap session, Stop tap - User Action Required",
+    "expectedTerminalBehavior": "Stop Smart Tap session after 93XX error. Stop tap. Allow retry without cashier intervention. Allow cashier to skip.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9369",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9369",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 408
+  },
+  {
+    "name": "12.5: Negotiate Crypto 2.1 - 94XX - Random 94XX error - Retry if terminal can fix",
+    "expectedTerminalBehavior": "Retry Negotiate Crypto after 94XX error. Return loyalty \"324234234\".",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9472",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command Retry",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "03",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Retry Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Get Data",
+              "prefix": "starts_with(90500000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Service Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(srq)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "05",
+                      "records": []
+                    },
+                    {
+                      "name": "Merchant Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(mer)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Sevice List",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(slr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Service Type Request",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(str)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "00",
+                          "records": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POS Capabilites",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(pcr)",
+                      "prefixLength": 0,
+                      "suffixLength": 0,
+                      "payload": "length(5)",
+                      "records": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get Data Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9472",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 409
+  },
+  {
+    "name": "12.6: Negotiate Crypto 2.1 - 95XX - Random 95XX error - Stop Smart Tap session - Proceed to Payment Session",
+    "expectedTerminalBehavior": "Stop Smart Tap session after 95XX error, get payment.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9532",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9532",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 410
+  },
+  {
+    "name": "12.7: Negotiate Crypto 2.1 - 95XX - Random 95XX error - Stop Smart Tap session - Stop Tap.",
+    "expectedTerminalBehavior": "Stop Smart Tap session after 95XX error, stop tap. Allow retry without cashier intervention. Allow cashier to skip.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9532",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9532",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 411
+  },
+  {
+    "name": "12.8: Negotiate Crypto 2.1 - 9XXX - Random 9XXX error - Stop Smart Tap session - Proceed to Payment Session",
+    "expectedTerminalBehavior": "Stop Smart Tap session after 9XXX error, get payment.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "SPLIT_OR_COMBINED",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9817",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "apdus": [
+            {
+              "name": "Select PPSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A40400)",
+              "records": []
+            },
+            {
+              "name": "Select PPSE response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9817",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 412
+  },
+  {
+    "name": "12.9: Negotiate Crypto 2.1 - 9XXX - Random 9XXX error - Stop Smart Tap session - Stop Tap",
+    "expectedTerminalBehavior": "Stop Smart Tap session after 9XXX error, stop tap. Allow retry without cashier intervention. Allow cashier to skip.",
+    "supportGenericKeyAuth": true,
+    "supportEcies": true,
+    "overrideTransactionMode": false,
+    "paymentEnabled": true,
+    "paymentRequested": true,
+    "vasEnabled": true,
+    "vasRequested": true,
+    "oseEnabled": true,
+    "oseSmartTap13": true,
+    "oseSmartTap13Priority": 2,
+    "oseSmartTap20": true,
+    "oseSmartTap20Priority": 1,
+    "oseCustom": false,
+    "oseCustomAid": {
+      "bytes": "1122334455"
+    },
+    "oseCustomPriority": 3,
+    "addedOseTags": {},
+    "removedOseTags": [],
+    "supportSmartTap13": true,
+    "supportSmartTap20": true,
+    "allowSkippingSmartTap2Select": true,
+    "includeMasterNonceInOseResponse": true,
+    "includeMasterEphemeralPublicKeyInOseResponse": false,
+    "includeNonceInProprietaryData": false,
+    "includeEphemeralPublicKeyInProprietaryData": false,
+    "smartTapMinVersion": "0000",
+    "smartTapMaxVersion": "0001",
+    "consumerId": "1234567890",
+    "tapId": "123",
+    "merchantId": 12345678,
+    "keyVersion": 1,
+    "useMerchantCapabilities": false,
+    "checkMerchantId": true,
+    "checkKeyVersion": true,
+    "requireEncryption": true,
+    "requireLiveAuthentication": true,
+    "validationSchema": {
+      "name": "Validation",
+      "type": "ALL",
+      "sessions": [
+        {
+          "name": "VAS",
+          "apdus": [
+            {
+              "name": "Select OSE",
+              "prefixLength": 0,
+              "suffixLength": 0,
+              "payload": "starts_with(00A404000A4F53)",
+              "records": []
+            },
+            {
+              "name": "Select OSE Response",
+              "prefixLength": 0,
+              "suffix": "9000",
+              "suffixLength": 2,
+              "records": []
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Command",
+              "prefix": "starts_with(90530000)",
+              "prefixLength": 5,
+              "suffix": "00",
+              "suffixLength": 1,
+              "records": [
+                {
+                  "name": "Negotiate Request Record",
+                  "optional": false,
+                  "tnf": "tnf(external)",
+                  "type": "ascii(ngr)",
+                  "prefix": "0001",
+                  "prefixLength": 2,
+                  "suffixLength": 0,
+                  "records": [
+                    {
+                      "name": "Session Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(ses)",
+                      "prefix": "length(8)",
+                      "prefixLength": 8,
+                      "suffix": "01",
+                      "suffixLength": 1,
+                      "payload": "01",
+                      "records": []
+                    },
+                    {
+                      "name": "Cryptography Params Record",
+                      "optional": false,
+                      "tnf": "tnf(external)",
+                      "type": "ascii(cpr)",
+                      "prefix": "length(70)",
+                      "prefixLength": 70,
+                      "suffixLength": 0,
+                      "records": [
+                        {
+                          "name": "Signature Record",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(sig)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(length(70),length(71),length(72),length(73))",
+                          "records": []
+                        },
+                        {
+                          "name": "Collector ID",
+                          "optional": false,
+                          "tnf": "tnf(external)",
+                          "type": "ascii(cld)",
+                          "prefixLength": 0,
+                          "suffixLength": 0,
+                          "payload": "OR(starts_with(04),starts_with(05))",
+                          "records": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Negotiate Smart Tap Secure Session Response",
+              "prefixLength": 0,
+              "suffix": "9817",
+              "suffixLength": 2,
+              "records": []
+            }
+          ]
+        }
+      ]
+    },
+    "merchantPublicKey": "03721C978FCEBDCDF98A8518BDC4FEDFD802B4EE4128E2513B665593375E238786",
+    "useCustomOseStatusWord": false,
+    "customOseStatusWord": "2587",
+    "customStatuses": {
+      "52": "9101",
+      "C0": "9101",
+      "A4": "6000",
+      "53": "9817",
+      "50": "9101"
+    },
+    "maxCustomStatuses": {
+      "52": 0,
+      "C0": 0,
+      "A4": 0,
+      "53": 1,
+      "50": 0
+    },
+    "addedNdefs": {},
+    "removedNdefs": [],
+    "smartTaps": [
+      {
+        "smartTapRedemptionInfo": {
+          "authenticationKey_": [],
+          "authenticationRequired_": false,
+          "bitField0_": 0,
+          "collectorId_": 0,
+          "cvcCase_": 0,
+          "encryptionRequired_": false,
+          "expirationMonth_": 0,
+          "expirationYear_": 0,
+          "multipleTransmissionSupported_": false,
+          "pinCase_": 0,
+          "type_": 1,
+          "unlockRequired_": false,
+          "valueCase_": 7,
+          "value_": "324234234",
+          "memoizedSerializedSize": -1,
+          "unknownFields": {
+            "count": 0,
+            "isMutable": false,
+            "memoizedSerializedSize": -1,
+            "objects": [],
+            "tags": []
+          },
+          "memoizedHashCode": 0
+        }
+      }
+    ],
+    "testSuiteId": 23,
+    "id": 413
+  }
+]

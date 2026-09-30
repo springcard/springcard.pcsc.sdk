@@ -1,0 +1,20 @@
+Merchant:
+
+pass.com.springcard.springblue.generic
+
+Public key:
+
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE9RCZaHxXUIjQFQnwKmq6+cVqFBNO
+6ZKQmekosMQRZmutPs8szUsiLokILdaiT/7F5qUl8qSfEvlocYy6z98jIw==
+
+Private key:
+
+MHcCAQEEICp+PT7K8FQSOi2HED1Ar5RqxxN2EkiKJMCSfaL4htYNoAoGCCqGSM49
+AwEHoUQDQgAE9RCZaHxXUIjQFQnwKmq6+cVqFBNO6ZKQmekosMQRZmutPs8szUsi
+LokILdaiT/7F5qUl8qSfEvlocYy6z98jIw==
+
+
+
+Private key to public key:
+
+openssl.exe ec -in pass.com.springcard.springblue.generic_private.pem -pubout -conv_form compressed

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11620.152 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcscDiag3", "PcscDiag3.csproj", "{F4831210-732E-4B98-A34B-F29BEBCAF87E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{9934150B-DCAF-4CF4-8749-33737F91264F}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4831210-732E-4B98-A34B-F29BEBCAF87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4831210-732E-4B98-A34B-F29BEBCAF87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4831210-732E-4B98-A34B-F29BEBCAF87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4831210-732E-4B98-A34B-F29BEBCAF87E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7F61DAC-B3B3-43FB-A2A1-95451C36AB73}
+	EndGlobalSection
+EndGlobal

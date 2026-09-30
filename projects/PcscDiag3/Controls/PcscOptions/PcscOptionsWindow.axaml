@@ -1,0 +1,97 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:local="using:PcscDiag3.Controls.PcscOptions"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PcscDiag3.Controls.PcscOptions.PcscOptionsWindow"
+				x:DataType="local:PcscOptionsViewModel"
+        Title="Global PC/SC options"
+				CanResize="False"
+				SizeToContent="WidthAndHeight"
+				WindowStartupLocation="CenterOwner"
+				ShowInTaskbar="False"
+				Closing="Window_Closing">
+
+	<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, *, Auto">
+		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+							 Theme="{StaticResource TitleH1}"
+							 Margin="0 10 0 5"
+							 Text="Context Scope:" />
+
+		<RadioButton Grid.Row="1" Grid.Column="0"
+								 Margin="10 5 20 5"
+								 FontWeight="Bold"
+								 GroupName="Scope"
+								 IsChecked="{Binding IsUserScopeChecked}"
+								 Content="User"/>
+		<TextBlock Grid.Row="1" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Restrict PC/SC actions to user's scope" />
+
+		<RadioButton Grid.Row="2" Grid.Column="0"
+								 Margin="10 5 20 5"
+								 FontWeight="Bold"
+								 GroupName="Scope"
+								 IsChecked="{Binding IsSystemScopeChecked}"
+								 Content="System"/>
+		<TextBlock Grid.Row="2" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Restrict PC/SC actions within system's scope" />
+
+		<RadioButton Grid.Row="3" Grid.Column="0"
+								 Margin="10 5 20 5"
+								 FontWeight="Bold"
+								 GroupName="Scope"
+								 IsChecked="{Binding IsTerminalScopeChecked}"
+								 Content="Terminal"/>
+		<TextBlock Grid.Row="3" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Restrict PC/SC actions to terminal's scope" />
+
+		<TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+							 Theme="{StaticResource TitleH1}"
+							 Margin="0 10 0 5"
+							 Text="Reader list filtering:" />
+
+		<RadioButton Grid.Row="5" Grid.Column="0"
+								 Margin="10 5 20 5"
+								 FontWeight="Bold"
+							 GroupName="Filtering"
+							 IsChecked="{Binding IsAllFilteringChecked}"
+								 Content="All"/>
+		<TextBlock Grid.Row="5" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Restrict PC/SC actions to user's scope" />
+
+		<RadioButton Grid.Row="6" Grid.Column="0"
+								 Margin="10 5 20 5"
+								 FontWeight="Bold"
+							 GroupName="Filtering"
+							 IsChecked="{Binding IsDefaultFilteringChecked}"
+								 Content="Default"/>
+		<TextBlock Grid.Row="6" Grid.Column="1"
+							 VerticalAlignment="Center"
+							 Text="Restrict PC/SC actions within system's scope" />
+
+		<RadioButton Grid.Row="7" Grid.Column="0"
+								 Margin="10 5 20 5"
+								 FontWeight="Bold"
+							 GroupName="Filtering"
+							 IsChecked="{Binding IsSpecificFilteringChecked}"
+								 Content="Specific:"/>
+		<TextBox Grid.Row="7" Grid.Column="1"
+						 VerticalAlignment="Center"
+						 Width="400"
+						 Text="{Binding SpecificFilteringValue}" />
+
+		<StackPanel Grid.Row="1" Grid.RowSpan="7" Grid.Column="2">
+			<Button Content="OK" Margin="0 10 10 5" Width="70"
+							HorizontalContentAlignment="Center"
+							Command="{Binding OkCommand}" />
+			<Button Content="Cancel" Margin="0 5 10 10" Width="70"
+							HorizontalContentAlignment="Center"
+							Command="{Binding CancelCommand}" />
+		</StackPanel>
+	</Grid>
+</Window>

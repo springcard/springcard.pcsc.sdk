@@ -1,0 +1,264 @@
+
+  {
+    "SmartTap Status": "SUCCESS",
+    "Payment Status": "DEACTIVATED - Link loss",
+    "Validation Results": "{\n  \"status\": \"FAILURE\",\n  \"message\": \"Validation Name\",\n  \"nestedResults\": [\n    {\n      \"status\": \"FAILURE\",\n      \"message\": \"VAS: Session: Different number of APDUs and APDU schemas to validate against. Number of APDUs: 8. Number of APDU schemas: 4.\",\n      \"nestedResults\": []\n    }\n  ]\n}",
+    "Timestamp": "2019-03-19 11:48:19.29",
+    "Durations (ms until phone responded)": [
+      "Select OSE : 37ms",
+      "Negotiate Smart Tap : 248ms",
+      "Get Smart Tap data : 318ms",
+      "Push Smart Tap data : 383ms"
+    ],
+    "Apdus": [
+      {
+        "Description": "Select OSE command apdu",
+        "Data": "00A404000A4F53452E5641532E303100"
+      },
+      {
+        "Description": "Select OSE response apdu",
+        "Data": "6F61500A416E64726F6964506179C0020001C108CC00000000008080C220E7FCF35777517081D9BE48DB4C8032E7F679F440087D93E62830FA9C9558B10AA523BF0C20611E4F09A000000476D0000111870101730EDF6D020000DF4D020001DF6201039000"
+      },
+      {
+        "Description": "Negotiate Smart Tap command apdu",
+        "Data": "90530000BDD403B76E6772000194030A736573D99265EC82416769010154039F63707211112222333344445555666677778888111122223333444455556666777788880103339118EAB84D4D7B9ADFADF908EEA6FC4844EF55380886877139A061C1E41DC300000001940348736967043045022100D131F7DABB17413EEF0441A111FB424807731506BC3955BFCDD13A6397CC751C0220255EE9416B8BDEBA81206C6729251FF02351650F814A5C6208F703E69E682913540305636C640400BC614E00"
+      },
+      {
+        "Description": "Negotiate Smart Tap response apdu",
+        "Data": "D403376E727394030A736573D99265EC82416769020154032164706B03AC36B3587070B78AB432BAF8B4E20D84FB3ACDB557FD2979D9797E2DAA6403ED9000"
+      },
+      {
+        "Description": "Get Smart Tap data command apdu",
+        "Data": "9050000041D4033B737271000194030A736573D99265EC82416769030114030B6D6572D40305636C640400BC614E140307736C72D4030173747200540305706372000000000100",
+        "Command": "Error parsing V1 command: 94"
+      },
+      {
+        "Description": "Get Smart Tap data response apdu",
+        "Data": "D403A673727394030A736573D99265EC8241676904015403907265620156BD960127C54229095C39C2ABCF845D94BE75899A1764C858750A78022F536F9335A63E0D03B2A8E280D6C8BA49B57F9C4EAF65BE64D001061F30F6CE8141E43A20D3084C8ED0AFD54108937223CC40A43AFAF7D2E7492966B85CFEC20B936FCCD123E072C5B82B4F237C0A2E663929EEFDDF4CED727EF7268AC86E2EF06ED97EFCCE96975259AFE0A5F4E69167A49000",
+        "Response": "Error parsing V1 response: 94"
+      },
+      {
+        "Description": "Push Smart Tap data command apdu",
+        "Data": "9052000042D4033C737072000194030A736573D99265EC824167690501140305706372000000000154031962707299010603546363640266725553445403056D6F6E04000004D200"
+      },
+      {
+        "Description": "Push Smart Tap data response apdu",
+        "Data": "D40310707372D4030A736573D99265EC8241676906019000"
+      }
+    ],
+    "Merchant Valuables (Pre-Encryption)": [
+      {
+        "type": "LOYALTY",
+        "serviceId": "24121021E5A89312",
+        "serviceNumberId": "F324234234",
+        "serviceNumberIdFormat": "BCD",
+        "issuerId": "12345678",
+        "issuer": "MERCHANT",
+        "issuerFormat": "BINARY"
+      },
+      {
+        "type": "WALLET_CUSTOMER",
+        "serviceId": "14661910DD914D84",
+        "serviceNumberId": "1234567890",
+        "serviceNumberIdFormat": "BINARY",
+        "issuerId": "71797971",
+        "issuer": "WALLET",
+        "issuerFormat": "BINARY",
+        "tapId": "7B",
+        "tapIdFormat": "BINARY",
+        "preferredLanguage": "fr"
+      }
+    ],
+    "Test Case Id": 1
+  },
+  {
+    "SmartTap Status": "SUCCESS",
+    "Payment Status": "DEACTIVATED - Link loss",
+    "Validation Results": "{\n  \"status\": \"FAILURE\",\n  \"message\": \"Validation Name\",\n  \"nestedResults\": [\n    {\n      \"status\": \"FAILURE\",\n      \"message\": \"VAS\",\n      \"nestedResults\": [\n        {\n          \"status\": \"SUCCESS\",\n          \"message\": \"Select OSE\",\n          \"nestedResults\": [\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Prefix has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Suffix has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Payload validation condition succeeded: starts_with(00A404000A4F53). Bytes: 00A404000A4F53452E5641532E303100\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"No records to validate against.\",\n              \"nestedResults\": []\n            }\n          ]\n        },\n        {\n          \"status\": \"SUCCESS\",\n          \"message\": \"Select OSE Response\",\n          \"nestedResults\": [\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Prefix has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Suffix has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Payload has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"No records to validate against.\",\n              \"nestedResults\": []\n            }\n          ]\n        },\n        {\n          \"status\": \"FAILURE\",\n          \"message\": \"Get Data\",\n          \"nestedResults\": [\n            {\n              \"status\": \"FAILURE\",\n              \"message\": \"Prefix condition failed STARTS_WITH check. Condition: 90500000. Bytes: 90530000BD\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Suffix validation condition succeeded: 00. Bytes: 00\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Payload has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"FAILURE\",\n              \"message\": \"Records\",\n              \"nestedResults\": [\n                {\n                  \"status\": \"FAILURE\",\n                  \"message\": \"Service Request Record\",\n                  \"nestedResults\": [\n                    {\n                      \"status\": \"SUCCESS\",\n                      \"message\": \"NDEF record ID has no validation condition.\",\n                      \"nestedResults\": []\n                    },\n                    {\n                      \"status\": \"SUCCESS\",\n                      \"message\": \"NDEF record TNF validation condition succeeded: tnf(external). Bytes: 0004\",\n                      \"nestedResults\": []\n                    },\n                    {\n                      \"status\": \"FAILURE\",\n                      \"message\": \"NDEF record type condition failed ASCII check. Condition: srq. Bytes: 6E6772\",\n                      \"nestedResults\": []\n                    },\n                    {\n                      \"status\": \"SUCCESS\",\n                      \"message\": \"Prefix validation condition succeeded: 0001. Bytes: 0001\",\n                      \"nestedResults\": []\n                    },\n                    {\n                      \"status\": \"SUCCESS\",\n                      \"message\": \"Suffix has no validation condition.\",\n                      \"nestedResults\": []\n                    },\n                    {\n                      \"status\": \"SUCCESS\",\n                      \"message\": \"Payload has no validation condition.\",\n                      \"nestedResults\": []\n                    },\n                    {\n                      \"status\": \"FAILURE\",\n                      \"message\": \"Records\",\n                      \"nestedResults\": [\n                        {\n                          \"status\": \"SUCCESS\",\n                          \"message\": \"Session Record\",\n                          \"nestedResults\": [\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"NDEF record ID has no validation condition.\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"NDEF record TNF validation condition succeeded: tnf(external). Bytes: 0004\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"NDEF record type validation condition succeeded: ascii(ses). Bytes: 736573\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"Prefix validation condition succeeded: length(8). Bytes: E6822E33A24D7B46\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"Suffix validation condition succeeded: 01. Bytes: 01\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"Payload validation condition succeeded: 01. Bytes: 01\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"No records to validate against.\",\n                              \"nestedResults\": []\n                            }\n                          ]\n                        },\n                        {\n                          \"status\": \"FAILURE\",\n                          \"message\": \"Merchant Record\",\n                          \"nestedResults\": [\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"NDEF record ID has no validation condition.\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"NDEF record TNF validation condition succeeded: tnf(external). Bytes: 0004\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"FAILURE\",\n                              \"message\": \"NDEF record type condition failed ASCII check. Condition: mer. Bytes: 637072\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"Prefix has no validation condition.\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"Suffix has no validation condition.\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"SUCCESS\",\n                              \"message\": \"Payload has no validation condition.\",\n                              \"nestedResults\": []\n                            },\n                            {\n                              \"status\": \"FAILURE\",\n                              \"message\": \"Bytes are not a valid NDEF message. Bytes: 11112222333344445555666677778888111122223333444455556666777788880103339118EAB84D4D7B9ADFADF908EEA6FC4844EF55380886877139A061C1E41DC300000001940348736967043045022025D60EF171ACFD3B7FDB30F34E4C4BA4F31D0B48431A8C96C87FA9B7EDC576A90221009DB99609ED6C94160EFD7C17A935C7A32B945C9C0567CC319C55F4F340E11A13540305636C640400BC614E\",\n                              \"throwable\": {\n                                \"detailMessage\": \"expected MB flag\",\n                                \"stackTrace\": [\n                                  {\n                                    \"declaringClass\": \"android.nfc.NdefRecord\",\n                                    \"fileName\": \"NdefRecord.java\",\n                                    \"lineNumber\": 807,\n                                    \"methodName\": \"parse\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"android.nfc.NdefMessage\",\n                                    \"fileName\": \"NdefMessage.java\",\n                                    \"lineNumber\": 98,\n                                    \"methodName\": \"\\u003cinit\\u003e\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.validation.RecordsHelper\",\n                                    \"fileName\": \"RecordsHelper.java\",\n                                    \"lineNumber\": 27,\n                                    \"methodName\": \"validate\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.validation.Record\",\n                                    \"fileName\": \"Record.java\",\n                                    \"lineNumber\": 206,\n                                    \"methodName\": \"validate\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.validation.RecordsHelper\",\n                                    \"fileName\": \"RecordsHelper.java\",\n                                    \"lineNumber\": 68,\n                                    \"methodName\": \"validate\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.validation.Record\",\n                                    \"fileName\": \"Record.java\",\n                                    \"lineNumber\": 206,\n                                    \"methodName\": \"validate\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.validation.RecordsHelper\",\n                                    \"fileName\": \"RecordsHelper.java\",\n                                    \"lineNumber\": 68,\n                                    \"methodName\": \"validate\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.validation.Apdu\",\n                                    \"fileName\": \"Apdu.java\",\n                                    \"lineNumber\": 108,\n                                    \"methodName\": \"validate\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.validation.Session\",\n                                    \"fileName\": \"Session.java\",\n                                    \"lineNumber\": 64,\n                                    \"methodName\": \"validate\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.validation.Schema\",\n                                    \"fileName\": \"Schema.java\",\n                                    \"lineNumber\": 142,\n                                    \"methodName\": \"validate\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.hce.TestProcessor\",\n                                    \"fileName\": \"TestProcessor.java\",\n                                    \"lineNumber\": 220,\n                                    \"methodName\": \"startResultsActivityAndFinish\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.google.commerce.tapandpay.merchantapp.hce.MerchantApduService\",\n                                    \"fileName\": \"MerchantApduService.java\",\n                                    \"lineNumber\": 159,\n                                    \"methodName\": \"onDeactivated\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"android.nfc.cardemulation.HostApduService$MsgHandler\",\n                                    \"fileName\": \"HostApduService.java\",\n                                    \"lineNumber\": 295,\n                                    \"methodName\": \"handleMessage\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"android.os.Handler\",\n                                    \"fileName\": \"Handler.java\",\n                                    \"lineNumber\": 102,\n                                    \"methodName\": \"dispatchMessage\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"android.os.Looper\",\n                                    \"fileName\": \"Looper.java\",\n                                    \"lineNumber\": 154,\n                                    \"methodName\": \"loop\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"android.app.ActivityThread\",\n                                    \"fileName\": \"ActivityThread.java\",\n                                    \"lineNumber\": 6119,\n                                    \"methodName\": \"main\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"java.lang.reflect.Method\",\n                                    \"fileName\": \"Method.java\",\n                                    \"lineNumber\": -2,\n                                    \"methodName\": \"invoke\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.android.internal.os.ZygoteInit$MethodAndArgsCaller\",\n                                    \"fileName\": \"ZygoteInit.java\",\n                                    \"lineNumber\": 886,\n                                    \"methodName\": \"run\"\n                                  },\n                                  {\n                                    \"declaringClass\": \"com.android.internal.os.ZygoteInit\",\n                                    \"fileName\": \"ZygoteInit.java\",\n                                    \"lineNumber\": 776,\n                                    \"methodName\": \"main\"\n                                  }\n                                ],\n                                \"suppressedExceptions\": []\n                              },\n                              \"nestedResults\": []\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"status\": \"SUCCESS\",\n          \"message\": \"Get Data Response\",\n          \"nestedResults\": [\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Prefix has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Suffix has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"Payload has no validation condition.\",\n              \"nestedResults\": []\n            },\n            {\n              \"status\": \"SUCCESS\",\n              \"message\": \"No records to validate against.\",\n              \"nestedResults\": []\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+    "Timestamp": "2019-03-19 11:48:17.959",
+    "Durations (ms until phone responded)": [
+      "Select OSE : 36ms",
+      "Negotiate Smart Tap : 731ms"
+    ],
+    "Apdus": [
+      {
+        "Description": "Select OSE command apdu",
+        "Data": "00A404000A4F53452E5641532E303100"
+      },
+      {
+        "Description": "Select OSE response apdu",
+        "Data": "6F61500A416E64726F6964506179C0020001C108CC00000000008080C220A6F1B1B3F8BD678985EFBBCA1E97CBE9F1C50C76139C584D359000F42E91639FA523BF0C20611E4F09A000000476D0000111870101730EDF6D020000DF4D020001DF6201039000"
+      },
+      {
+        "Description": "Negotiate Smart Tap command apdu",
+        "Data": "90530000BDD403B76E6772000194030A736573E6822E33A24D7B46010154039F63707211112222333344445555666677778888111122223333444455556666777788880103339118EAB84D4D7B9ADFADF908EEA6FC4844EF55380886877139A061C1E41DC300000001940348736967043045022025D60EF171ACFD3B7FDB30F34E4C4BA4F31D0B48431A8C96C87FA9B7EDC576A90221009DB99609ED6C94160EFD7C17A935C7A32B945C9C0567CC319C55F4F340E11A13540305636C640400BC614E00"
+      },
+      {
+        "Description": "Negotiate Smart Tap response apdu",
+        "Data": "D403376E727394030A736573E6822E33A24D7B46020154032164706B0203A120B10E5371CA25F24CB5F6BB754DF6B296C347CAAD675DAFF2818044002F9000"
+      }
+    ],
+    "Test Case Id": 1
+  },
+  {
+    "SmartTap Status": "DEACTIVATED - Link loss",
+    "Payment Status": "DEACTIVATED - Link loss",
+    "Validation Results": "{\n  \"status\": \"FAILURE\",\n  \"message\": \"Validation Name\",\n  \"nestedResults\": [\n    {\n      \"status\": \"FAILURE\",\n      \"message\": \"VAS: Session: Different number of APDUs and APDU schemas to validate against. Number of APDUs: 2. Number of APDU schemas: 4.\",\n      \"nestedResults\": []\n    }\n  ]\n}",
+    "Timestamp": "2019-03-19 11:47:57.566",
+    "Durations (ms until phone responded)": [
+      "Select OSE : 37ms"
+    ],
+    "Apdus": [
+      {
+        "Description": "Select OSE command apdu",
+        "Data": "00A404000A4F53452E5641532E303100"
+      },
+      {
+        "Description": "Select OSE response apdu",
+        "Data": "6F61500A416E64726F6964506179C0020001C108CC00000000008080C22050E42E8A87456DBA11057331DEC0A78C0D83F1A8B9929B2D8312F936E8B5182AA523BF0C20611E4F09A000000476D0000111870101730EDF6D020000DF4D020001DF6201039000"
+      }
+    ],
+    "Test Case Id": 1
+  },
+  {
+    "SmartTap Status": "ERROR",
+    "Payment Status": "DEACTIVATED - Link loss",
+    "Validation Results": "{\n  \"status\": \"FAILURE\",\n  \"message\": \"Validation Name\",\n  \"nestedResults\": [\n    {\n      \"status\": \"FAILURE\",\n      \"message\": \"VAS: Session: Different number of APDUs and APDU schemas to validate against. Number of APDUs: 8. Number of APDU schemas: 4.\",\n      \"nestedResults\": []\n    }\n  ]\n}",
+    "Timestamp": "2019-03-19 11:46:13.96",
+    "Durations (ms until phone responded)": [
+      "Select OSE : 71ms",
+      "Select Smart Tap v2.x : 206ms",
+      "Negotiate Smart Tap : 484ms",
+      "Get Smart Tap data : 674ms"
+    ],
+    "Apdus": [
+      {
+        "Description": "Select OSE command apdu",
+        "Data": "00A404000A4F53452E5641532E303100"
+      },
+      {
+        "Description": "Select OSE response apdu",
+        "Data": "6F61500A416E64726F6964506179C0020001C108CC00000000008080C22013D579CDFDA596C50C1279178E86FE5122AD67D4F99411603DECB5510492F8A3A523BF0C20611E4F09A000000476D0000111870101730EDF6D020000DF4D020001DF6201039000"
+      },
+      {
+        "Description": "Select Smart Tap v2.x command apdu",
+        "Data": "00A4040009A000000476D000011100"
+      },
+      {
+        "Description": "Select Smart Tap v2.x response apdu",
+        "Data": "00000001DC0321036D646E6D646E0413D579CDFDA596C50C1279178E86FE5122AD67D4F99411603DECB5510492F8A39000",
+        "Handset Nonce": "13D579CDFDA596C50C1279178E86FE5122AD67D4F99411603DECB5510492F8A3"
+      },
+      {
+        "Description": "Negotiate Smart Tap command apdu",
+        "Data": "90530000BED403B86E6772000194030A73657376A44D131A2FF69D01015403A063707211112222333344445555666677778888111122223333444455556666777788880103339118EAB84D4D7B9ADFADF908EEA6FC4844EF55380886877139A061C1E41DC3000000019403497369670430460221001C2F2C206CADBAC6B1D971709F40D2B4E5ECD17A74941B762BDD0549FC2BF7250221005E44E7057A636A4B0CC5FA1166B86F55E1BB71EEE48EDA07AFC1BD6CDD4F6CCA540305636C640400BC614E00",
+        "Command": {
+          "collectorId": 12345678,
+          "encodedCollectorId": "00BC614E",
+          "ephemeralPublicKey": "03339118EAB84D4D7B9ADFADF908EEA6FC4844EF55380886877139A061C1E41DC3",
+          "liveAuthenticate": true,
+          "longTermKeyVersion": 1,
+          "signature": "30460221001C2F2C206CADBAC6B1D971709F40D2B4E5ECD17A74941B762BDD0549FC2BF7250221005E44E7057A636A4B0CC5FA1166B86F55E1BB71EEE48EDA07AFC1BD6CDD4F6CCA",
+          "terminalNonce": "1111222233334444555566667777888811112222333344445555666677778888",
+          "version": 1,
+          "sequenceNumber": "01",
+          "sessionId": "76A44D131A2FF69D",
+          "status": "OK"
+        }
+      },
+      {
+        "Description": "Error response apdu",
+        "Data": "D403376E727394030A73657376A44D131A2FF69D020154032164706B0254AAF8240F25D2C5A34A050F77D24E42B4E2935B72D7434DC896BF17FB98A5E39500",
+        "Response": {
+          "handsetEphemeralPublicKey": "0254AAF8240F25D2C5A34A050F77D24E42B4E2935B72D7434DC896BF17FB98A5E3",
+          "statusWord": {
+            "Message": "cannot authenticate terminal",
+            "Status Word": "9500"
+          },
+          "sequenceNumber": "02",
+          "sessionId": "76A44D131A2FF69D",
+          "status": "OK"
+        }
+      },
+      {
+        "Description": "Get Smart Tap data command apdu",
+        "Data": "905000003AD40334737271000194030A73657376A44D131A2FF69D020114030B6D6572D40305636C640400BC614E14030073726C540305706372000000000100",
+        "Command": {
+          "merchantInfo": {
+            "category": "UNKNOWN",
+            "collectorId": 12345678,
+            "requestedServiceObjects": []
+          },
+          "supportsZlib": false,
+          "version": 1,
+          "sequenceNumber": "02",
+          "sessionId": "76A44D131A2FF69D",
+          "status": "OK"
+        }
+      },
+      {
+        "Description": "Error response apdu",
+        "Data": "D4034373727394030A73657376A44D131A2FF69D030154032D726562012B039C78ED555AD0EFB1DF5253B9CECA18F6EB0994E07133D3FC95D794E749A66322678CAC2ACFB82A83EEEF9001",
+        "Response": {
+          "recordBundles": [
+            {
+              "isCompressed": false,
+              "isEncrypted": true,
+              "payload": "2B039C78ED555AD0EFB1DF5253B9CECA18F6EB0994E07133D3FC95D794E749A66322678CAC2ACFB82A83EEEF",
+              "statusBitmap": "01"
+            }
+          ],
+          "serviceObjects": [],
+          "statusWord": {
+            "Message": "no payload",
+            "Status Word": "9001"
+          },
+          "sequenceNumber": "03",
+          "sessionId": "76A44D131A2FF69D",
+          "status": "OK"
+        }
+      }
+    ],
+    "Test Case Id": 1
+  },
+  {
+    "SmartTap Status": "ERROR",
+    "Payment Status": "DEACTIVATED - Link loss",
+    "Validation Results": "{\n  \"status\": \"FAILURE\",\n  \"message\": \"Validation Name\",\n  \"nestedResults\": [\n    {\n      \"status\": \"FAILURE\",\n      \"message\": \"VAS: Session: Different number of APDUs and APDU schemas to validate against. Number of APDUs: 6. Number of APDU schemas: 4.\",\n      \"nestedResults\": []\n    }\n  ]\n}",
+    "Timestamp": "2019-03-19 11:43:16.144",
+    "Durations (ms until phone responded)": [
+      "Select OSE : 41ms",
+      "Select Smart Tap v2.x : 166ms",
+      "Negotiate Smart Tap : 435ms"
+    ],
+    "Apdus": [
+      {
+        "Description": "Select OSE command apdu",
+        "Data": "00A404000A4F53452E5641532E303100"
+      },
+      {
+        "Description": "Select OSE response apdu",
+        "Data": "6F61500A416E64726F6964506179C0020001C108CC00000000008080C220F8C5BFA7B0CAE129B699833CD4ECB0942F8DC0A1E812D446775D9BB988E53204A523BF0C20611E4F09A000000476D0000111870101730EDF6D020000DF4D020001DF6201039000"
+      },
+      {
+        "Description": "Select Smart Tap v2.x command apdu",
+        "Data": "00A4040009A000000476D000011100"
+      },
+      {
+        "Description": "Select Smart Tap v2.x response apdu",
+        "Data": "00000001DC0321036D646E6D646E04F8C5BFA7B0CAE129B699833CD4ECB0942F8DC0A1E812D446775D9BB988E532049000",
+        "Handset Nonce": "F8C5BFA7B0CAE129B699833CD4ECB0942F8DC0A1E812D446775D9BB988E53204"
+      },
+      {
+        "Description": "Negotiate Smart Tap command apdu",
+        "Data": "90530000BDD403B76E6772000194030A73657376A44D131A2FF69D010154039F63707211112222333344445555666677778888111122223333444455556666777788880103339118EAB84D4D7B9ADFADF908EEA6FC4844EF55380886877139A061C1E41DC3000000019403487369673046022100E490662C21F80BD778483549A62395850731A537A6D64251FB86A4462F2DDE480221003A5AEA496BA272F9ECDC198C32ED1F2AD258BBAE7B7931842A3F1F7008738CBB540305636C640400BC614E00",
+        "Command": "Error parsing V2 response: Failed to create primitive from NDEF record."
+      },
+      {
+        "Description": "Error response apdu",
+        "Data": "6A80"
+      }
+    ],
+    "Test Case Id": 1
+  }
+]

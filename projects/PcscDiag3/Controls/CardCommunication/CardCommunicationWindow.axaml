@@ -1,0 +1,134 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:local="using:PcscDiag3.Controls.CardCommunication"
+				xmlns:info="using:PcscDiag3.Controls.CardCommunication.Informations"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="PcscDiag3.Controls.CardCommunication.CardCommunicationWindow"
+				x:DataType="local:CardCommunicationViewModel"
+        Title="{Binding WindowTitle}"
+				Icon="{Binding WindowIcon}"
+				WindowStartupLocation="CenterOwner"
+				Closing="Window_Closing"
+				CanResize="False"
+				SizeToContent="Width"
+				MinWidth="{Binding WindowWidth}" Height="600">
+
+	<Grid RowDefinitions="Auto, Auto, *, Auto" ColumnDefinitions="*, Auto, Auto">
+		<!-- Header -->
+		<Panel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+					 Background="White"
+					 Margin="-15 -15 -15 15">
+			<Grid Background="White"
+						Margin="25 25 25 10"
+						ColumnDefinitions="Auto, *, Auto, Auto, Auto, Auto">
+				<TextBlock Grid.Column="0" Margin="0 0 5 0" VerticalAlignment="Center" Text="Card ATR:" />
+				<SelectableTextBlock Grid.Column="1" Text="{Binding CardAtr}" />
+
+				<TextBlock Grid.Column="2" Margin="10 0 5 0" VerticalAlignment="Center" Text="Protocol:" />
+				<SelectableTextBlock Grid.Column="3" Text="{Binding Protocol}" />
+
+				<TextBlock Grid.Column="4" Margin="10 0 5 0" VerticalAlignment="Center" Text="Mode:" />
+				<SelectableTextBlock Grid.Column="5" Text="{Binding Mode}" />
+			</Grid>
+		</Panel>
+
+		<!-- Commands tabs -->
+		<TabControl Grid.Row="1" Grid.Column="0" SelectedIndex="{Binding SelectedTabIndex}" MinWidth="700">
+			<TabItem Header="Transmit" />
+			<TabItem Header="Control" />
+		</TabControl>
+		<info:InformationsView Grid.Row="2" Grid.RowSpan="2" Grid.Column="0"
+													 Margin="0 10 10 0"
+													 DataContext="{Binding InformationsViewModel}" />
+
+		<!-- Action buttons -->
+		<StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical">
+			<Button Width="80" HorizontalContentAlignment="Center"
+							Margin="0 10 0 0"
+							Command="{Binding TransmitCommand}"
+							IsVisible="{Binding IsTransmitButtonVisible}"
+							IsEnabled="{Binding IsTransmitButtonEnabled}">
+				<StackPanel>
+					<Image Source="avares://PcscDiag3/Assets/Communication/transmit.png" Margin="3" Height="25"/>
+					<TextBlock Text="Transmit"/>
+				</StackPanel>
+			</Button>
+
+			<Button Width="80" HorizontalContentAlignment="Center"
+							Margin="0 10 0 0"
+							Command="{Binding ControlCommand}"
+							IsVisible="{Binding IsControlButtonVisible}"
+							IsEnabled="{Binding IsControlButtonEnabled}">
+				<StackPanel>
+					<Image Source="avares://PcscDiag3/Assets/Communication/control.png" Margin="3" Height="25"/>
+					<TextBlock Text="Control"/>
+				</StackPanel>
+			</Button>
+
+			<Button Width="80" HorizontalContentAlignment="Center"
+							Command="{Binding ConnectCommand}"
+							IsEnabled="{Binding IsConnectButtonEnabled}">
+				<StackPanel>
+					<Image Source="avares://PcscDiag3/Assets/Communication/connect.png" Margin="3" Height="25"/>
+					<TextBlock Text="Connect"/>
+				</StackPanel>
+			</Button>
+
+			<Button Width="80" HorizontalContentAlignment="Center"
+							Command="{Binding ReconnectCommand}"
+							IsEnabled="{Binding IsReconnectButtonEnabled}">
+				<StackPanel>
+					<Image Source="avares://PcscDiag3/Assets/Communication/reconnect.png" Margin="3" Height="25"/>
+					<TextBlock Text="Reconnect"/>
+				</StackPanel>
+			</Button>
+
+			<Button Width="80" HorizontalContentAlignment="Center"
+							Command="{Binding DisconnectCommand}"
+							IsEnabled="{Binding IsDisconnectButtonEnabled}">
+				<StackPanel>
+					<Image Source="avares://PcscDiag3/Assets/Communication/disconnect.png" Margin="3" Height="25"/>
+					<TextBlock Text="Disconnect"/>
+				</StackPanel>
+			</Button>
+		</StackPanel>
+
+		<!-- Close button -->
+		<StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical">
+			<Button Width="80" HorizontalContentAlignment="Center"
+							Command="{Binding ShowLogs}">
+				<StackPanel>
+					<Image Source="avares://PcscDiag3/Assets/Communication/close.png" Margin="3" Height="25"/>
+					<TextBlock Text="Logs"/>
+				</StackPanel>
+			</Button>
+			<Button Width="80" HorizontalContentAlignment="Center"
+							Click="CloseButton_Click">
+				<StackPanel>
+					<Image Source="avares://PcscDiag3/Assets/Communication/close.png" Margin="3" Height="25"/>
+					<TextBlock Text="Close"/>
+				</StackPanel>
+			</Button>
+		</StackPanel>
+
+		<!-- Logs pannel -->
+		<Grid Grid.Row="0" Grid.RowSpan="4" Grid.Column="2"
+					RowDefinitions="*, Auto">
+			<ScrollViewer Grid.Row="0" Margin="20 0 0 0" IsVisible="{Binding IsLogsVisible}"
+										Background="White">
+				<Panel Width="{Binding LogsWidth}">
+					<TextBox IsReadOnly="True" Text="{Binding InformationsViewModel.Logs}" FontFamily="Consolas" />
+				</Panel>
+			</ScrollViewer>
+			<Button Grid.Row="1"
+							Width="{Binding LogsWidth}"
+							Margin="20 10 0 0"
+							IsVisible="{Binding IsLogsVisible}"
+							HorizontalContentAlignment="Center"
+							Content="Copy log to clipboard"
+							Command="{Binding CopyLogToClipboardCommand}" />
+		</Grid>
+	</Grid>
+</Window>

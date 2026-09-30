@@ -1,0 +1,18 @@
+<Application xmlns="https://github.com/avaloniaui"
+						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						 xmlns:sc="using:SpringCard.LibCs.Windows.UI.Themes"
+						 x:Class="PcscDiag3.App"
+						 RequestedThemeVariant="Light">
+
+	<Application.Resources>
+		<ResourceDictionary>
+			<SolidColorBrush x:Key="PrimarySelectionBackground" Color="{DynamicResource SystemAccentColor}" Opacity="0.4" />
+		</ResourceDictionary>
+	</Application.Resources>
+
+	<Application.Styles>
+		<sc:SpringCardTheme Variant="BluePetrol" />
+		<StyleInclude Source="avares://Avalonia.Controls.TreeDataGrid/Themes/Fluent.axaml"/>
+		<StyleInclude Source="avares://AvaloniaHex/Themes/Simple/AvaloniaHex.axaml"/>
+	</Application.Styles>
+</Application>
