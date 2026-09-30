@@ -52,20 +52,47 @@
     <Reference Include="HashtagChris.DotNetBlueZ">
       <HintPath>..\packages\HashtagChris.DotNetBlueZ.1.3.1\lib\netstandard2.0\DotNetBlueZ.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.12, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.12\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.6.0.0\lib\net462\Microsoft.Bcl.HashCode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=10.0.0.12, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.10.0.12\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=10.0.0.12, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.10.0.12\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=10.0.0.12, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.10.0.12\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SpringCard.Bluetooth">
       <HintPath>..\packages\SpringCard.Bluetooth.24.44.15.96630849\lib\net48\SpringCard.Bluetooth.dll</HintPath>
     </Reference>
-    <Reference Include="SpringCard.LibCs">
-      <HintPath>..\packages\SpringCard.LibCs.25.21.30\lib\net48\SpringCard.LibCs.dll</HintPath>
+    <Reference Include="SpringCard.LibCs, Version=25.21.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SpringCard.LibCs.25.21.31\lib\net48\SpringCard.LibCs.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SpringCard.LibCs.Translations">
-      <HintPath>..\packages\SpringCard.LibCs.Translations.25.21.30\lib\netstandard2.0\SpringCard.LibCs.Translations.dll</HintPath>
+    <Reference Include="SpringCard.LibCs.GetText, Version=25.21.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SpringCard.LibCs.GetText.25.21.31\lib\netstandard2.0\SpringCard.LibCs.GetText.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SpringCard.LibCs.GetText">
-      <HintPath>..\packages\SpringCard.LibCs.GetText.25.21.30\lib\netstandard2.0\SpringCard.LibCs.GetText.dll</HintPath>
+    <Reference Include="SpringCard.LibCs.Net.Telnet, Version=25.21.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SpringCard.LibCs.Net.Telnet.25.21.31\lib\netstandard2.0\SpringCard.LibCs.Net.Telnet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SpringCard.LibCs.Translations, Version=25.21.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SpringCard.LibCs.Translations.25.21.31\lib\netstandard2.0\SpringCard.LibCs.Translations.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SpringCard.LibCs.Windows">
       <HintPath>..\packages\SpringCard.LibCs.Windows.25.21.21\lib\net48\SpringCard.LibCs.Windows.dll</HintPath>
@@ -86,6 +113,18 @@
       <HintPath>..\packages\SpringCard.PCSC.ZeroDriver.Forms.25.22.10\lib\net48\SpringCard.PCSC.ZeroDriver.Forms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=10.0.0.12, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Collections.Immutable.10.0.12\lib\net462\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager, Version=10.0.0.12, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.10.0.12\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -94,13 +133,46 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Formats.Nrbf, Version=10.0.0.12, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Formats.Nrbf.10.0.12\lib\net462\System.Formats.Nrbf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=10.0.0.12, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Reflection.Metadata.10.0.12\lib\net462\System.Reflection.Metadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Resources.Extensions, Version=10.0.0.12, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Resources.Extensions.10.0.12\lib\net462\System.Resources.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Tmds.DBus">
-      <HintPath>..\packages\Tmds.DBus.0.7.0\lib\netstandard2.0\Tmds.DBus.dll</HintPath>
+    <Reference Include="Tmds.DBus, Version=0.92.0.0, Culture=neutral, PublicKeyToken=9abd76e9812c1bca">
+      <HintPath>..\packages\Tmds.DBus.0.92.0\lib\netstandard2.0\Tmds.DBus.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Vanara.Core">
       <HintPath>..\packages\Vanara.Core.4.1.2\lib\net48\Vanara.Core.dll</HintPath>
@@ -110,12 +182,6 @@
     </Reference>
     <Reference Include="Vanara.PInvoke.Shared">
       <HintPath>..\packages\Vanara.PInvoke.Shared.4.1.2\lib\net48\Vanara.PInvoke.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Resources.Extensions">
-      <HintPath>..\packages\System.Resources.Extensions.4.6.0\lib\netstandard2.0\System.Resources.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -165,4 +231,11 @@
   <PropertyGroup>
     <PostBuildEvent>$(ProjectDir)postbuild.cmd $(OutDir)</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets'))" />
+  </Target>
 </Project>
